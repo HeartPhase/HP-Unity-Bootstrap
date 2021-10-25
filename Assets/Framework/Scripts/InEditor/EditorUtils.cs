@@ -7,7 +7,12 @@ using System.IO;
 public static class EditorUtils
 {
     static string PREFAB_TARGET_PATH = "Assets/Game/Resources/Prefabs/";
-    public static void CreateFromPrefab(Internal_PrefabEnum prefab) {
+
+    public enum NewPrefabMode { 
+        OriginalAsBase,
+        BrandNew
+    }
+    public static void CreateFromPrefab(Internal_PrefabEnum prefab, NewPrefabMode mode) {
         string prefabPath = prefab.GetDescription();
         GameObject go = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
         var inited = (GameObject)PrefabUtility.InstantiatePrefab(go);
@@ -20,6 +25,7 @@ public static class EditorUtils
         {
             index++;
         }
+        if (mode == NewPrefabMode.BrandNew) PrefabUtility.UnpackPrefabInstance(inited, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
         PrefabUtility.SaveAsPrefabAsset(inited, ConstructPrefabPath(go.name, index), out bool success);
         DevUtils.Log(success);
         Object.Destroy(inited);
