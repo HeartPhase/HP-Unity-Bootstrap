@@ -28,7 +28,8 @@ public static class EditorUtils
         if (mode == NewPrefabMode.BrandNew) PrefabUtility.UnpackPrefabInstance(inited, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
         PrefabUtility.SaveAsPrefabAsset(inited, ConstructPrefabPath(go.name, index), out bool success);
         DevUtils.Log(success);
-        Object.Destroy(inited);
+        if (Application.isPlaying) Object.Destroy(inited);
+        else Object.DestroyImmediate(inited);
     }
 
     private static string ConstructPrefabPath(string name, int index) => PREFAB_TARGET_PATH + name + "/" + name + "_" + index.ToString() + ".prefab";
