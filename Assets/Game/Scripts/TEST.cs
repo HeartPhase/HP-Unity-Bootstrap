@@ -5,11 +5,11 @@ using UnityEngine;
 public class TEST : MonoBehaviour
 {
     public void Clicked() {
-        EditorUtils.CreateFromPrefab(Internal_PrefabEnum.Ball, EditorUtils.NewPrefabMode.BrandNew);
+        //EditorUtils.CreateFromPrefab(Internal_PrefabEnum.Ball, EditorUtils.NewPrefabMode.BrandNew);
     }
 
     [ContextMenu("HPFramework / CreateCube")]
     public void AddCubeTest() {
-        EditorUtils.CreateFromPrefab(Internal_PrefabEnum.Cube, EditorUtils.NewPrefabMode.OriginalAsBase);
+        //EditorUtils.CreateFromPrefab(Internal_PrefabEnum.Cube, EditorUtils.NewPrefabMode.OriginalAsBase);
     }
 }
