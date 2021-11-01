@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 游戏的启动脚本。
@@ -19,12 +18,11 @@ public static class GameStart
 
     /// <summary>
     /// 载入模块。
-    /// 这里我暂时没有想到实现，待会给自己提一个Issue。
+    /// 既然都是（几乎）必须的模块为什么要让用户自定义？写死写死。
     /// </summary>
     public static void LoadModules() {
-        // todo: load from user config
-        ModuleDispatcher.Instance.RegisterMono<NonSenseModule>();
-        NonSenseModule nonSenseModule = ModuleDispatcher.Instance.Get<NonSenseModule>();
-        DevUtils.Log(nonSenseModule.name);
+        SceneModule.Init();
+        NonSenseModule.Init();
+        UIModule.Init();
     }
 }

@@ -7,8 +7,9 @@ using UnityEngine;
 /// </summary>
 public class NonSenseModule : MonoBehaviour, IGameModule
 {
-    public void Init()
+    public static void Init()
     {
+        ModuleDispatcher.Instance.Register<NonSenseModule>();
         DevUtils.Log("Inited", "NonSenseModule");
     }
 }

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f178d7dcd3427459f5c87e70361fbe, type: 3}
   m_Name: DefaultPrefabSettings
   m_EditorClassIdentifier: 
+  info: '[Back Up Result (Context)] : Success'
   StandardisedPrefab_Path: Assets/Framework/StandardisedPrefabs
   ENUM_FILE: Assets/Framework/Settings/PrefabSettings/Internal_PrefabEnum.cs
   CONTEXT_FILE: Assets/Framework/Settings/PrefabSettings/Internal_ContextMenu.cs
+  enum_BackUpReady: 1
+  context_BackUpReady: 1

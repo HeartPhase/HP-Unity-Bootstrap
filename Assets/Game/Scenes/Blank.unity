@@ -309,7 +309,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 136016924}
         m_TargetAssemblyTypeName: TEST, Assembly-CSharp
-        m_MethodName: Clicked
+        m_MethodName: TEST_click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
