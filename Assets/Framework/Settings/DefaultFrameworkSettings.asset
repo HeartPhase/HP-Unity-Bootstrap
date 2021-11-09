@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac66a0d23d515246afc17ce9a61296c, type: 3}
+  m_Name: DefaultFrameworkSettings
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 7986689667628176077, guid: bbe50f2a185c15c4c83485f27b5cee75, type: 3}
