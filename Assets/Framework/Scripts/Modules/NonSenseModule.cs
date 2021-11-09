@@ -9,7 +9,7 @@ public class NonSenseModule : MonoBehaviour, IGameModule
 {
     public static void Init()
     {
-        ModuleDispatcher.Instance.Register<NonSenseModule>();
+        ModuleDispatcher.Instance.RegisterMono<NonSenseModule>();
         DevUtils.Log("Inited", "NonSenseModule");
     }
 }

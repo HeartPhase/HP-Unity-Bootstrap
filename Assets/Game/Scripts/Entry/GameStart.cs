@@ -24,5 +24,6 @@ public static class GameStart
         SceneModule.Init();
         NonSenseModule.Init();
         UIModule.Init();
+        InputModule.Init();
     }
 }
