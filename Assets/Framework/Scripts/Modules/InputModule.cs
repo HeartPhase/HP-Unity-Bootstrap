@@ -8,6 +8,12 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class InputModule : MonoBehaviour, IGameModule
 {
+    public static void Init()
+    {
+        ModuleDispatcher.Instance.RegisterMono<InputModule>();
+        DevUtils.Log("Inited", "InputModule");
+    }
+
     /// <summary>
     /// 鼠标滚轮
     /// </summary>
@@ -28,11 +34,6 @@ public class InputModule : MonoBehaviour, IGameModule
     public static event Action Gameplay_AnyKey = delegate { };
 
     private static DefaultInputAction input;
-    public static void Init()
-    {
-        ModuleDispatcher.Instance.RegisterMono<InputModule>();
-        DevUtils.Log("Inited", "InputModule");
-    }
 
     /// <summary>
     /// 启用框架默认的Input Action

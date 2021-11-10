@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-    private void OnEnable()
+    EventModule eventModule;
+    private void Awake()
     {
+        eventModule = ModuleDispatcher.Instance.Get<EventModule>();
         //InputModule.Gameplay_MouseScroll += OnMouseScrolledTest;
         //InputModule.PersonPerspective_Camera += OnCameraMovedTest;
     }
     public void TEST1_click()
     {
-        ModuleDispatcher.Instance.Get<SceneModule>().LoadLevel("1_SomeLevel", false);
+        eventModule.Listen("Button2Pressed", TESTAction);
     }
 
     public void TEST2_click()
     {
-        ModuleDispatcher.Instance.Get<InputModule>().ToggleActions("PersonPerspective", false);
+        eventModule.Invoke("Button2Pressed", new EventArgs(this, "hello", "world"));
+    }
+
+    private void TESTAction(EventArgs args) {
+        DevUtils.Log($"{args.ToString()}");
     }
 
     private void OnDisable()
