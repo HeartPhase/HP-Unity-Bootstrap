@@ -9,7 +9,7 @@ public class TEST : MonoBehaviour
     }
     public void TEST1_click()
     {
-        ModuleDispatcher.Instance.Get<SceneModule>().LoadLevel("1_SomeLevel");
+        ModuleDispatcher.Instance.Get<SceneModule>().LoadLevel("1_SomeLevel", false);
     }
 
     public void TEST2_click()
