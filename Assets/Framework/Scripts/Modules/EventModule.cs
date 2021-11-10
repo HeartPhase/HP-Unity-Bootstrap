@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 /// <summary>
 /// 事件模块。
@@ -91,6 +92,21 @@ public class EventModule : IGameModule
         else {
             DevUtils.Log("No such event");
         }
+    }
+
+    /// <summary>
+    /// 移除所有监听。
+    /// </summary>
+    public void RemoveAll() { 
+        events.Clear();
+    }
+
+    /// <summary>
+    /// Debug用，获取当前的监听信息。
+    /// 为了安全起见做了一下Clone，最好别在其他地方用。
+    /// </summary>
+    public Dictionary<string, Action<EventArgs>> ReadEventsData() {
+        return events.ToDictionary(s => s.Key, s => s.Value);
     }
 }
 
