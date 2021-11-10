@@ -11,9 +11,20 @@ public static class GameStart
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     public static void Start()
     {
+        LoadSettings();
         // Maybe I don't need an Entry scene at all.
         // I think for loading the right scene I can possibly handle it in some SceneManagementModule after load the modules.
         LoadModules();
+    }
+
+    /// <summary>
+    /// （从资源文件中）载入配置。
+    /// 目前只有一个全局的FrameworkSettings。
+    /// </summary>
+    public static void LoadSettings() {
+        // 这个路径要不要改成变量捏？
+        FrameworkSettings settings = Resources.Load<ScriptableObject>("Settings/DefaultFrameworkSettings") as FrameworkSettings;
+        settings.Init();
     }
 
     /// <summary>
