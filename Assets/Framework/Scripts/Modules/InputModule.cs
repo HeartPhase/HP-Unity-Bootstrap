@@ -25,6 +25,8 @@ public class InputModule : MonoBehaviour, IGameModule
 
     public static event Action Gameplay_RightClick = delegate { };
 
+    public static event Action Gameplay_AnyKey = delegate { };
+
     private static DefaultInputAction input;
     public static void Init()
     {
@@ -71,6 +73,11 @@ public class InputModule : MonoBehaviour, IGameModule
         input.PersonPerspective.Camera.performed += ctx =>
         {
             PersonPerspective_Camera(ctx.ReadValue<Vector2>());
+        };
+
+        input.Gameplay.Anykey.performed += ctx =>
+        {
+            Gameplay_AnyKey();
         };
     }
 
