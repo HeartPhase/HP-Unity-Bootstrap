@@ -9,17 +9,18 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneModule : MonoBehaviour, IGameModule
 {
+    public static void Init()
+    {
+        ModuleDispatcher.Instance.RegisterMono<SceneModule>();
+        DevUtils.Log("Inited", "SceneModule");
+    }
+
     private Coroutine loadingCoroutine;
     private GameObject loadingScreenPrefab;
     private LoadingScreen loadingControl;
 
     private UIModule uiModule => ModuleDispatcher.Instance.Get<UIModule>();
 
-    public static void Init()
-    {
-        ModuleDispatcher.Instance.RegisterMono<SceneModule>();
-        DevUtils.Log("Inited", "SceneModule");
-    }
 
     /// <summary>
     /// 显示加载画面，加载名为name的场景。

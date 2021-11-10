@@ -8,22 +8,25 @@ using UnityEngine.UI;
 /// </summary>
 public class UIModule : MonoBehaviour, IGameModule
 {
-    public static GameObject mainCanvasGO;
-    public static Canvas mainCanvas;
-    private static Transform contentParent;
-
-    private static Dictionary<string, GameObject> cachedUIs;
-
     /// <summary>
     /// 注册模块，创建主Canvas和UI缓存。
     /// </summary>
-    public static void Init() {
+    public static void Init()
+    {
         ModuleDispatcher.Instance.RegisterMono<UIModule>();
         DevUtils.Log("Inited", "UIModule");
         CreateMainCanvas();
         DevUtils.Log("Main canvas created", "UIModule");
         cachedUIs = new Dictionary<string, GameObject>();
     }
+
+    public static GameObject mainCanvasGO;
+    public static Canvas mainCanvas;
+    private static Transform contentParent;
+
+    private static Dictionary<string, GameObject> cachedUIs;
+
+    
 
     /// <summary>
     /// 创建主Canvas。

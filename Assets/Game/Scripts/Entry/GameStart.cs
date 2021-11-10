@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public static class GameStart
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     public static void Start()
     {
         LoadSettings();
@@ -33,8 +33,8 @@ public static class GameStart
     /// </summary>
     public static void LoadModules() {
         SceneModule.Init();
-        NonSenseModule.Init();
         UIModule.Init();
         InputModule.Init();
+        EventModule.Init();
     }
 }
