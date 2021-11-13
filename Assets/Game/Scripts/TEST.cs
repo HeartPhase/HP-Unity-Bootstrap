@@ -2,40 +2,24 @@ using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-    EventModule eventModule;
+    [SerializeField] GameObject cube;
+    [SerializeField] GameObject sphere;
     private void Awake()
     {
-        //eventModule = ModuleDispatcher.Instance.Get<EventModule>();
-        InputModule.Gameplay_MouseScroll += OnMouseScrolledTest;
-        InputModule.PersonPerspective_Camera += OnCameraMovedTest;
+
     }
+
     public void TEST1_click()
     {
-        ModuleDispatcher.Instance.Unregister<UIModule>();
+        cube.GetComponent<MeshRenderer>().material.SetAlpha(0.5f);
     }
 
     public void TEST2_click()
     {
-        
+        DevUtils.Log($"{cube.GetParent()}");
     }
-
-    private void TESTAction(EventArgs args) {
-        DevUtils.Log($"{args.ToString()}");
-    }
-
     private void OnDisable()
     {
-        InputModule.Gameplay_MouseScroll -= OnMouseScrolledTest;
-        InputModule.PersonPerspective_Camera -= OnCameraMovedTest;
-    }
 
-    private void OnMouseScrolledTest(Vector2 input)
-    {
-        DevUtils.Log($"Mouse Scrolled {input.y}");
-    }
-
-    private void OnCameraMovedTest(Vector2 input)
-    {
-        DevUtils.Log($"Mouse Move {input}");
     }
 }
