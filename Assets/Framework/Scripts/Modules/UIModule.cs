@@ -9,15 +9,12 @@ using UnityEngine.UI;
 public class UIModule : MonoBehaviour, IGameModule
 {
     /// <summary>
-    /// 注册模块，创建主Canvas和UI缓存。
+    /// 注册模块。
     /// </summary>
     public static void Init()
     {
         ModuleDispatcher.Instance.RegisterMono<UIModule>();
         DevUtils.Log("Inited", "UIModule");
-        CreateMainCanvas();
-        DevUtils.Log("Main canvas created", "UIModule");
-        cachedUIs = new Dictionary<string, GameObject>();
     }
 
     public static GameObject mainCanvasGO;
@@ -26,7 +23,15 @@ public class UIModule : MonoBehaviour, IGameModule
 
     private static Dictionary<string, GameObject> cachedUIs;
 
-    
+    /// <summary>
+    /// 创建主Canvas和UI缓存
+    /// </summary>
+    private void Awake()
+    {
+        CreateMainCanvas();
+        DevUtils.Log("Main canvas created", "UIModule");
+        cachedUIs = new Dictionary<string, GameObject>();
+    }
 
     /// <summary>
     /// 创建主Canvas。
@@ -34,6 +39,7 @@ public class UIModule : MonoBehaviour, IGameModule
     /// </summary>
     public static void CreateMainCanvas() {
         mainCanvasGO = Instantiate(Resources.Load<GameObject>("Components/MainCanvas/MainCanvas"));
+        mainCanvasGO.name = "Main Canvas";
         DontDestroyOnLoad(mainCanvasGO);
         mainCanvas = mainCanvasGO.GetComponent<Canvas>();
         contentParent = mainCanvasGO.transform.GetChild(0);

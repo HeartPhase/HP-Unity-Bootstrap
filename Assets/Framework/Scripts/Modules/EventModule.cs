@@ -103,7 +103,7 @@ public class EventModule : IGameModule
 
     /// <summary>
     /// Debug用，获取当前的监听信息。
-    /// 为了安全起见做了一下Clone，最好别在其他地方用。
+    /// 为了安全起见做了一下Clone，掩耳盗铃。
     /// </summary>
     public Dictionary<string, Action<EventArgs>> ReadEventsData() {
         return events.ToDictionary(s => s.Key, s => s.Value);

@@ -12,11 +12,9 @@ public static class GameStart
     public static void Start()
     {
         LoadSettings();
-        // Maybe I don't need an Entry scene at all.
-        // I think for loading the right scene I can possibly handle it in some SceneManagementModule after load the modules.
         LoadModules();
     }
-
+    
     /// <summary>
     /// （从资源文件中）载入配置。
     /// 目前只有一个全局的FrameworkSettings。
