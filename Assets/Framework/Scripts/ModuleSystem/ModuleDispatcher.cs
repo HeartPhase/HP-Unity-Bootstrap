@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// Service Locator实现游戏中跨场景通用模块的非单例分发。
@@ -38,7 +39,8 @@ public class ModuleDispatcher
     private static void Init()
     {
         if (gameObject == null) {
-            gameObject = new GameObject("ModuleCenter");
+            gameObject = new GameObject("Module Center");
+            gameObject.AddComponent<ModuleDispatcherInspector>();
             GameObject.DontDestroyOnLoad(gameObject);
         }
     }
@@ -82,12 +84,14 @@ public class ModuleDispatcher
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void RegisterMono<T>() where T: MonoBehaviour, IGameModule {
-        T module = gameObject.AddComponent<T>();
+        GameObject go = new GameObject(typeof(T).Name);
+        T module = go.AddComponent<T>();
+        go.transform.SetParent(gameObject.transform);
         Register<T>(module);
     }
 
     /// <summary>
-    /// 从模块池中删除，如果是Mono模块也会同时删除其Component。
+    /// 从模块池中删除，如果是Mono模块也会同时删除其GameObject。
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void Unregister<T>() where T : IGameModule {
@@ -98,8 +102,16 @@ public class ModuleDispatcher
         }
         IGameModule module = modules[key];
         if (module is MonoBehaviour) {
-            GameObject.Destroy((MonoBehaviour)module);
+            GameObject.Destroy(((MonoBehaviour)module).gameObject);
         }
         modules.Remove(key);
+    }
+
+    /// <summary>
+    /// Debug用，获取当前的模块信息。
+    /// 为了安全起见做了一下Clone，掩耳盗铃。
+    /// </summary>
+    public Dictionary<string, IGameModule> ReadModulesData() {
+        return modules.ToDictionary(s => s.Key, s => s.Value);
     }
 }
