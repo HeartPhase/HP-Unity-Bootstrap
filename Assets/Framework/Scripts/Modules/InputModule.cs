@@ -26,6 +26,10 @@ public class InputModule : MonoBehaviour, IGameModule
     /// 鼠标控制镜头移动
     /// </summary>
     public static event Action<Vector2> PersonPerspective_Camera = delegate { };
+    /// <summary>
+    /// 交互/使用/确认
+    /// </summary>
+    public static event Action Gameplay_Interact = delegate { };
 
     public static event Action Gameplay_LeftClick = delegate { };
 
@@ -59,6 +63,11 @@ public class InputModule : MonoBehaviour, IGameModule
         input.Gameplay.Movement.performed += ctx =>
         {
             Gameplay_Movement(ctx.ReadValue<Vector2>());
+        };
+
+        input.Gameplay.Interact.performed += ctx =>
+        {
+            Gameplay_Interact();
         };
 
         input.Gameplay.LeftClick.performed += ctx =>
@@ -97,5 +106,26 @@ public class InputModule : MonoBehaviour, IGameModule
             else
             { map.Disable(); }
         }
+    }
+
+    // DEV
+
+    private InputAction FindActionByName(string actionHierarchyName) {
+        InputAction action = input.asset.FindAction(actionHierarchyName);
+        return action;
+    }
+
+    public void RemapAction(string actionHierarchyName) { 
+        InputAction actionToRemap = FindActionByName(actionHierarchyName);
+        if (actionToRemap == null) {
+            DevUtils.Log($"No {actionHierarchyName} action to remap", "InputModule");
+        }
+        actionToRemap.Disable();
+        _ = actionToRemap.PerformInteractiveRebinding()
+            .WithControlsExcluding("<Mouse>/*")
+            .WithCancelingThrough("<Keyboard>/escape")
+            .Start();
+        actionToRemap.Enable();
+        // todo: handle edge conditions and use On...() extensions.
     }
 }

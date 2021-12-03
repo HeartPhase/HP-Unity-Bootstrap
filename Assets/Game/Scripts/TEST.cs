@@ -6,20 +6,23 @@ public class TEST : MonoBehaviour
     [SerializeField] GameObject sphere;
     private void Awake()
     {
-
+        InputModule.Gameplay_Interact += LogTestMsg;
     }
 
     public void TEST1_click()
     {
-        cube.GetComponent<MeshRenderer>().material.SetAlpha(0.5f);
+        ModuleDispatcher.Instance.Get<InputModule>().RemapAction("Gameplay/Interact");
     }
 
     public void TEST2_click()
     {
-        DevUtils.Log($"{cube.GetParent()}");
+    }
+
+    private void LogTestMsg() {
+        DevUtils.Log("Interacted", "Test");
     }
     private void OnDisable()
     {
-
+        InputModule.Gameplay_Interact -= LogTestMsg;
     }
 }
