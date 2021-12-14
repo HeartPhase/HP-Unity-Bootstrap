@@ -30,6 +30,10 @@ public class InputModule : MonoBehaviour, IGameModule
     /// 交互/使用/确认
     /// </summary>
     public static event Action Gameplay_Interact = delegate { };
+    /// <summary>
+    /// 需要第二个交互按钮或其他区分时使用
+    /// </summary>
+    public static event Action Gameplay_Use = delegate { };
 
     public static event Action Gameplay_LeftClick = delegate { };
 
@@ -70,6 +74,11 @@ public class InputModule : MonoBehaviour, IGameModule
             Gameplay_Interact();
         };
 
+        input.Gameplay.Use.performed += ctx =>
+        {
+            Gameplay_Use();
+        };
+
         input.Gameplay.LeftClick.performed += ctx =>
         {
             Gameplay_LeftClick();
@@ -108,24 +117,76 @@ public class InputModule : MonoBehaviour, IGameModule
         }
     }
 
-    // DEV
-
+    /// <summary>
+    /// 通过Input Mapping里的路径获取对应的InputAction。
+    /// </summary>
+    /// <param name="actionHierarchyName">形如"Gameplay/Interact"</param>
     private InputAction FindActionByName(string actionHierarchyName) {
         InputAction action = input.asset.FindAction(actionHierarchyName);
         return action;
     }
 
-    public void RemapAction(string actionHierarchyName) { 
+    /// <summary>
+    /// 获取路径对应InputAction所绑定的操作。
+    /// 例如："Gameplay/Interact" -> "[E]"。
+    /// </summary>
+    public string GetCurrentBinding(string actionHierarchyName) { 
+        InputAction actionToRemap = FindActionByName(actionHierarchyName);
+        return InputControlPath.ToHumanReadableString(actionToRemap.GetBindingDisplayString());
+    }
+
+    /// <summary>
+    /// 动态换绑操作对应的按键。
+    /// 可自定义绑定成功/取消/发现键位冲突时的Callback。
+    /// </summary>
+    public void RemapAction(string actionHierarchyName, Action onComplete = null, Action onCancel = null, Action<bool, string> onDuplicate = null) {
         InputAction actionToRemap = FindActionByName(actionHierarchyName);
         if (actionToRemap == null) {
             DevUtils.Log($"No {actionHierarchyName} action to remap", "InputModule");
         }
         actionToRemap.Disable();
-        _ = actionToRemap.PerformInteractiveRebinding()
+        var RebindingOperation = actionToRemap.PerformInteractiveRebinding()
             .WithControlsExcluding("<Mouse>/*")
             .WithCancelingThrough("<Keyboard>/escape")
+            .OnCancel(
+                (op) => {
+                    op.action.Enable();
+                    op.Dispose();
+                    if (onCancel != null) onCancel.Invoke();
+                }
+            )
+            .OnComplete(
+                (op) => { 
+                    op.action.Enable();
+                    op.Dispose();
+                    if (onComplete != null) onComplete.Invoke();
+                }
+            )
+            .OnApplyBinding(
+                (op, path) => {
+                    if (!HaveDuplicateBinding(path, actionToRemap))
+                        actionToRemap.ApplyBindingOverride(path);
+                    else if (onDuplicate != null) {
+                        onDuplicate(true, InputControlPath.ToHumanReadableString(path));
+                    }
+                }
+            )
             .Start();
-        actionToRemap.Enable();
-        // todo: handle edge conditions and use On...() extensions.
+    }
+
+    /// <summary>
+    /// 检测键位是否出现键位冲突。
+    /// </summary>
+    private bool HaveDuplicateBinding(string path, InputAction action) {
+        foreach (InputBinding binding in input.bindings) {
+            if (binding.action == action.bindings[0].action) {
+                continue;
+            }
+            if (binding.effectivePath == path) {
+                DevUtils.Log($"Find Duplicate@{binding.action}");
+                return true;
+            }
+        }
+        return false;
     }
 }

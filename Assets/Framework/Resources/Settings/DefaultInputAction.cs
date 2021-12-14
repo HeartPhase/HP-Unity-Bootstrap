@@ -80,6 +80,15 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8eda591-b8c1-4855-9c4d-5207ce4f39fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc46c0bc-7a35-415f-a282-29f00e7d7596"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -289,6 +309,7 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
         m_Gameplay_RightClick = m_Gameplay.FindAction("RightClick", throwIfNotFound: true);
         m_Gameplay_Anykey = m_Gameplay.FindAction("Anykey", throwIfNotFound: true);
         m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Use = m_Gameplay.FindAction("Use", throwIfNotFound: true);
         // PersonPerspective
         m_PersonPerspective = asset.FindActionMap("PersonPerspective", throwIfNotFound: true);
         m_PersonPerspective_Camera = m_PersonPerspective.FindAction("Camera", throwIfNotFound: true);
@@ -357,6 +378,7 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_RightClick;
     private readonly InputAction m_Gameplay_Anykey;
     private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_Use;
     public struct GameplayActions
     {
         private @DefaultInputAction m_Wrapper;
@@ -367,6 +389,7 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_Gameplay_RightClick;
         public InputAction @Anykey => m_Wrapper.m_Gameplay_Anykey;
         public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        public InputAction @Use => m_Wrapper.m_Gameplay_Use;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -394,6 +417,9 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Use.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUse;
+                @Use.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUse;
+                @Use.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUse;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -416,6 +442,9 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
             }
         }
     }
@@ -461,6 +490,7 @@ public partial class @DefaultInputAction : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnAnykey(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnUse(InputAction.CallbackContext context);
     }
     public interface IPersonPerspectiveActions
     {
