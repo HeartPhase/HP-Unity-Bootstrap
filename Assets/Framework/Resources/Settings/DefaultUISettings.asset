@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac66a0d23d515246afc17ce9a61296c, type: 3}
-  m_Name: DefaultFrameworkSettings
+  m_Script: {fileID: 11500000, guid: 1c3f6b18e392f8245ad0c7c19878d3db, type: 3}
+  m_Name: DefaultUISettings
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 7986689667628176077, guid: bbe50f2a185c15c4c83485f27b5cee75, type: 3}
-  uiSettings: {fileID: 11400000, guid: 0248afd4966727947a724305c13ed2da, type: 2}
+  bindings:
+    bindings:
+    - windowName: TestWindow
+      windowPrefabPath: Assets/Game/Resources/Prefabs/UIWindow/TestWindow.prefab

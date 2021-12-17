@@ -20,8 +20,7 @@ public static class GameStart
     /// 目前只有一个全局的FrameworkSettings。
     /// </summary>
     public static void LoadSettings() {
-        // 这个路径要不要改成变量捏？
-        FrameworkSettings settings = Resources.Load<ScriptableObject>("Settings/DefaultFrameworkSettings") as FrameworkSettings;
+        FrameworkSettings settings = FrameworkGlobals.DEFAULT_SETTINGS;
         settings.Init();
     }
 

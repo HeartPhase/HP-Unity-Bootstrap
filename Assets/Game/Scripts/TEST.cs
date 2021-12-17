@@ -18,14 +18,19 @@ public class TEST : MonoBehaviour
 
     public void TEST1_click()
     {
-        bool showingDuplicateInfo = false;
-        string actionName = "Gameplay/Interact";
-        devText.text = $"Rebinding - {actionName}";
-        m_input.RemapAction("Gameplay/Interact",
-            () => { if (!showingDuplicateInfo) devText.text = "Complete"; },
-            () => { if (!showingDuplicateInfo) devText.text = "Cancelled"; },
-            (duplicated, path) => { devText.text = $"{path} is taken for another action!"; showingDuplicateInfo = true; }
-        );
+        //bool showingDuplicateInfo = false;
+        //string actionName = "Gameplay/Interact";
+        //devText.text = $"Rebinding - {actionName}";
+        //m_input.RemapAction("Gameplay/Interact",
+        //    () => { if (!showingDuplicateInfo) devText.text = "Complete"; },
+        //    () => { if (!showingDuplicateInfo) devText.text = "Cancelled"; },
+        //    (duplicated, path) => { devText.text = $"{path} is taken for another action!"; showingDuplicateInfo = true; }
+        //);
+
+        FrameworkSettings s = ModuleDispatcher.Instance.Get<FrameworkSettings>();
+        GameObject go = s.uiSettings.GetUIWindow<TestWindow>();
+        UIModule ui = ModuleDispatcher.Instance.Get<UIModule>();
+        ui.ShowUI(go);
     }
 
     public void TEST2_click()
