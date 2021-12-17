@@ -15,4 +15,4 @@ MonoBehaviour:
   bindings:
     bindings:
     - windowName: TestWindow
-      windowPrefabPath: Assets/Game/Resources/Prefabs/UIWindow/TestWindow.prefab
+      windowPrefabPath: Prefabs/UIWindow/TestWindow
