@@ -12,4 +12,9 @@ public static class FrameworkGlobals
     /// 框架在某些地方使用了非常暴力的“代码写代码”，这是附在生成的代码文件开头的警告。
     /// </summary>
     public static string GENERATED_SCRIPTS_WARNING = "///This is an auto-generated script, DO NOT modify OR delete it manually!\n///这是自动生成的脚本，请勿手动修改或删除！\n";
+
+    /// <summary>
+    /// 加密字符串时使用的key，如果需要存档加密等请务必修改这个key并且不要公开！
+    /// </summary>
+    public static byte[] ENCRYPTION_KEY = { 0x8f, 0xe7, 0x81, 0x8f, 0x23, 0x10, 0x44, 0xc3, 0xa0, 0x2c, 0x26, 0xb6, 0xbc, 0xfb, 0x23, 0x9 };
 }
