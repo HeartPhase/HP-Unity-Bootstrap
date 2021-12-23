@@ -18,7 +18,6 @@ public class TEST : MonoBehaviour
     private List<string> uniqueNames;
     private void Awake()
     {
-        InputModule.Gameplay_Interact += LogTestMsg;
         m_input = ModuleDispatcher.Instance.Get<InputModule>();
         m_ui = ModuleDispatcher.Instance.Get<UIModule>();
         uniqueNames = new();
@@ -48,9 +47,5 @@ public class TEST : MonoBehaviour
         }
         
         //devText.text = "Interact: " + m_input.GetCurrentBinding("Gameplay/Interact");
-    }
-
-    private void OnDisable()
-    {
     }
 }
