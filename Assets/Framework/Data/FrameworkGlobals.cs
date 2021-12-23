@@ -4,17 +4,21 @@ using UnityEngine;
 using System.IO;
 
 /// <summary>
-/// ¿ò¼ÜÀï»áÓÃµ½µÄÒ»Ğ©È«¾Ö±äÁ¿¡£
+/// æ¡†æ¶é‡Œä¼šç”¨åˆ°çš„ä¸€äº›å…¨å±€å˜é‡ã€‚
 /// </summary>
 public static class FrameworkGlobals
 {
     /// <summary>
-    /// ¿ò¼ÜÔÚÄ³Ğ©µØ·½Ê¹ÓÃÁË·Ç³£±©Á¦µÄ¡°´úÂëĞ´´úÂë¡±£¬ÕâÊÇ¸½ÔÚÉú³ÉµÄ´úÂëÎÄ¼ş¿ªÍ·µÄ¾¯¸æ¡£
+    /// æ¡†æ¶åœ¨æŸäº›åœ°æ–¹ä½¿ç”¨äº†éå¸¸æš´åŠ›çš„â€œä»£ç å†™ä»£ç â€ï¼Œè¿™æ˜¯é™„åœ¨ç”Ÿæˆçš„ä»£ç æ–‡ä»¶å¼€å¤´çš„è­¦å‘Šã€‚
     /// </summary>
-    public static string GENERATED_SCRIPTS_WARNING = "///This is an auto-generated script, DO NOT modify OR delete it manually!\n///ÕâÊÇ×Ô¶¯Éú³ÉµÄ½Å±¾£¬ÇëÎğÊÖ¶¯ĞŞ¸Ä»òÉ¾³ı£¡\n";
+    public static string GENERATED_SCRIPTS_WARNING = "///This is an auto-generated script, DO NOT modify OR delete it manually!\n///è¿™æ˜¯è‡ªåŠ¨ç”Ÿæˆçš„è„šæœ¬ï¼Œè¯·å‹¿æ‰‹åŠ¨ä¿®æ”¹æˆ–åˆ é™¤ï¼\n";
 
     /// <summary>
-    /// ¿ò¼ÜÄ¬ÈÏÉèÖÃµÄÎ»ÖÃ£¬Èç¹ûÒªĞŞ¸Ä»òÌæ»»Ä¬ÈÏÉèÖÃ£¬ÕâÀïÒ²ĞèÒªĞŞ¸Ä¡£
+    /// æ¡†æ¶é»˜è®¤è®¾ç½®çš„ä½ç½®ï¼Œå¦‚æœè¦ä¿®æ”¹æˆ–æ›¿æ¢é»˜è®¤è®¾ç½®ï¼Œè¿™é‡Œä¹Ÿéœ€è¦ä¿®æ”¹ã€‚
     /// </summary>
     public static FrameworkSettings DEFAULT_SETTINGS => Resources.Load("Settings/DefaultFrameworkSettings") as FrameworkSettings;
+
+    /// åŠ å¯†å­—ç¬¦ä¸²æ—¶ä½¿ç”¨çš„keyï¼Œå¦‚æœéœ€è¦å­˜æ¡£åŠ å¯†ç­‰è¯·åŠ¡å¿…ä¿®æ”¹è¿™ä¸ªkeyå¹¶ä¸”ä¸è¦å…¬å¼€ï¼
+    /// </summary>
+    public static byte[] ENCRYPTION_KEY = { 0x8f, 0xe7, 0x81, 0x8f, 0x23, 0x10, 0x44, 0xc3, 0xa0, 0x2c, 0x26, 0xb6, 0xbc, 0xfb, 0x23, 0x9 };
 }

@@ -50,11 +50,7 @@ public class TEST : MonoBehaviour
         //devText.text = "Interact: " + m_input.GetCurrentBinding("Gameplay/Interact");
     }
 
-    private void LogTestMsg() {
-        DevUtils.Log("Interacted", "Test");
-    }
     private void OnDisable()
     {
-        InputModule.Gameplay_Interact -= LogTestMsg;
     }
 }
