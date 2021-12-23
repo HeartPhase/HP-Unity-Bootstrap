@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,10 +13,15 @@ public class TEST : MonoBehaviour
     [SerializeField] TMPro.TMP_Text devText;
 
     private InputModule m_input;
+    private UIModule m_ui;
+
+    private List<string> uniqueNames;
     private void Awake()
     {
         InputModule.Gameplay_Interact += LogTestMsg;
         m_input = ModuleDispatcher.Instance.Get<InputModule>();
+        m_ui = ModuleDispatcher.Instance.Get<UIModule>();
+        uniqueNames = new();
     }
 
     public void TEST1_click()
@@ -26,16 +34,20 @@ public class TEST : MonoBehaviour
         //    () => { if (!showingDuplicateInfo) devText.text = "Cancelled"; },
         //    (duplicated, path) => { devText.text = $"{path} is taken for another action!"; showingDuplicateInfo = true; }
         //);
-
-        FrameworkSettings s = ModuleDispatcher.Instance.Get<FrameworkSettings>();
-        GameObject go = s.uiSettings.GetUIWindow<TestWindow>();
-        UIModule ui = ModuleDispatcher.Instance.Get<UIModule>();
-        ui.ShowUI(go);
+        var res = m_ui.ShowWindowMultiple<TestWindow>();
+        uniqueNames.Add(res.Item2);
     }
 
     public void TEST2_click()
     {
-        devText.text = "Interact: " + m_input.GetCurrentBinding("Gameplay/Interact");
+        if (uniqueNames.Count >= 0)
+        {
+            string randomName = uniqueNames[0];
+            uniqueNames.Remove(randomName);
+            m_ui.HideWindow(randomName);
+        }
+        
+        //devText.text = "Interact: " + m_input.GetCurrentBinding("Gameplay/Interact");
     }
 
     private void LogTestMsg() {
