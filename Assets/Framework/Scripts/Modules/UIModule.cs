@@ -184,6 +184,16 @@ public class UIModule : MonoBehaviour, IGameModule
     #region Overlay Layer
 
     // TODO
+    private GameObject Internal_ShowOverlay(GameObject overlay, string name)
+    {
+        if (overlay == null) return null;
+        overlay = Instantiate(overlay);
+        overlay.SetParent(mainCanvas.OverlayLayer, false);
+        overlay.transform.SetAsLastSibling();
+        overlay.name = name;
+        cachedOverlays.Add(name, overlay);
+        return overlay;
+    }
 
     #endregion
     
