@@ -4,23 +4,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class TEST : MonoBehaviour
 {
     [SerializeField] GameObject cube;
     [SerializeField] GameObject sphere;
 
-    [SerializeField] TMPro.TMP_Text devText;
-
-    private InputModule m_input;
-    private UIModule m_ui;
-
-    private List<string> uniqueNames;
     private void Awake()
     {
-        m_input = ModuleDispatcher.Instance.Get<InputModule>();
-        m_ui = ModuleDispatcher.Instance.Get<UIModule>();
-        uniqueNames = new();
+        SaveModule.SwitchSaveSlot(SaveModule.GetNextValidSlotNumber());
     }
 
     public void TEST1_click()
@@ -33,19 +26,20 @@ public class TEST : MonoBehaviour
         //    () => { if (!showingDuplicateInfo) devText.text = "Cancelled"; },
         //    (duplicated, path) => { devText.text = $"{path} is taken for another action!"; showingDuplicateInfo = true; }
         //);
-        var res = m_ui.ShowWindowMultiple<TestWindow>();
-        uniqueNames.Add(res.Item2);
+        SaveModule.SaveData(GenTestData(),GenTestData());
     }
 
     public void TEST2_click()
     {
-        if (uniqueNames.Count >= 0)
-        {
-            string randomName = uniqueNames[0];
-            uniqueNames.Remove(randomName);
-            m_ui.HideWindow(randomName);
-        }
-        
-        //devText.text = "Interact: " + m_input.GetCurrentBinding("Gameplay/Interact");
+        SaveModule.WriteSlotSaveFile();
+    }
+
+    private string GenTestData()
+    {
+        return Random.Range(10000000, 99999999).ToString();
+    }
+    private void OnDisable()
+    {
+
     }
 }
