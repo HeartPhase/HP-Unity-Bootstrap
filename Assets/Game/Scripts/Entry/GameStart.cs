@@ -34,5 +34,6 @@ public static class GameStart
         UIModule.Init();
         InputModule.Init();
         EventModule.Init();
+        SaveModule.Init();
     }
 }

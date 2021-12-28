@@ -12,4 +12,10 @@ public static class FrameworkGlobals
     /// 框架在某些地方使用了非常暴力的“代码写代码”，这是附在生成的代码文件开头的警告。
     /// </summary>
     public static string GENERATED_SCRIPTS_WARNING = "///This is an auto-generated script, DO NOT modify OR delete it manually!\n///这是自动生成的脚本，请勿手动修改或删除！\n";
+
+    /// <summary>
+    /// 存档文件的标准分隔符。
+    /// 使用char[]可以减少一次内置类型转换，提高一鸡儿多的性能。
+    /// </summary>
+    public static char[] SAVEFILE_DELIMITER = new char[] { '|' };
 }
