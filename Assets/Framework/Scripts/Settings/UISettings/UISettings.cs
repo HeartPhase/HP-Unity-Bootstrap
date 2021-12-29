@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// UI ModuleµÄÅäÖÃÎÄ¼ş¡£
+/// UI Moduleçš„é…ç½®æ–‡ä»¶ã€‚
 /// </summary>
 [CreateAssetMenu(menuName = "Framework Settings/UI Settings")]
 public class UISettings : ScriptableObject
@@ -12,14 +12,14 @@ public class UISettings : ScriptableObject
     UIWindowBindings bindings = new UIWindowBindings();
 
     /// <summary>
-    /// Ìí¼ÓÒ»ÌõUI Window°ó¶¨
+    /// æ·»åŠ ä¸€æ¡UI Windowç»‘å®š
     /// </summary>
     public void AddWindowBinding(string name, string prefabPath) { 
         bindings.AddBinding(name, prefabPath);
     }
 
     /// <summary>
-    /// Í¨¹ıUI WindowµÄ×ÓÀàÃû»ñÈ¡Ëù°ó¶¨µÄPrefab¡£
+    /// é€šè¿‡UI Windowçš„å­ç±»åè·å–æ‰€ç»‘å®šçš„Prefabã€‚
     /// </summary>
     public GameObject GetUIWindow(string name) {
         return bindings.GetPrefab(name);
@@ -27,7 +27,7 @@ public class UISettings : ScriptableObject
 
 
     /// <summary>
-    /// Ö±½ÓÍ¨¹ıUI WindowµÄ×ÓÀà»ñÈ¡Ëù°ó¶¨µÄPrefab¡£
+    /// ç›´æ¥é€šè¿‡UI Windowçš„å­ç±»è·å–æ‰€ç»‘å®šçš„Prefabã€‚
     /// </summary>
     public GameObject GetUIWindow<T>() where T : UIWindow{ 
         string name = typeof(T).Name;

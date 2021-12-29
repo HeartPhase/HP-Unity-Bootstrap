@@ -5,8 +5,8 @@ using System;
 using System.Linq;
 
 /// <summary>
-/// ÊÂ¼şÄ£¿é¡£
-/// ÓÎÏ·ÄÚ¿ÉÒÔ²»ÊÜÒıÓÃÏŞÖÆµØ´«µİÊÂ¼ş¡£
+/// äº‹ä»¶æ¨¡å—ã€‚
+/// æ¸¸æˆå†…å¯ä»¥ä¸å—å¼•ç”¨é™åˆ¶åœ°ä¼ é€’äº‹ä»¶ã€‚
 /// </summary>
 public class EventModule : IGameModule
 {
@@ -18,7 +18,7 @@ public class EventModule : IGameModule
     private Dictionary<string, Action<EventArgs>> events = new();
 
     /// <summary>
-    /// ¼àÌıÃûÎªnameµÄÊÂ¼ş¡£
+    /// ç›‘å¬åä¸ºnameçš„äº‹ä»¶ã€‚
     /// </summary>
     public void Listen(string name, Action<EventArgs> action)
     {
@@ -45,7 +45,7 @@ public class EventModule : IGameModule
     }
 
     /// <summary>
-    /// ´¥·¢ÃûÎªnameµÄÊÂ¼ş¡£
+    /// è§¦å‘åä¸ºnameçš„äº‹ä»¶ã€‚
     /// </summary>
     public void Invoke(string name, EventArgs args = null) {
         if (events.ContainsKey(name)) { 
@@ -54,7 +54,7 @@ public class EventModule : IGameModule
     }
 
     /// <summary>
-    /// ÒÆ³ı¶ÔÃûÎªnameÊÂ¼şµÄËùÓĞ¼àÌı¡£
+    /// ç§»é™¤å¯¹åä¸ºnameäº‹ä»¶çš„æ‰€æœ‰ç›‘å¬ã€‚
     /// </summary>
     /// <param name="name"></param>
     public void Remove(string name) {
@@ -64,7 +64,7 @@ public class EventModule : IGameModule
     }
 
     /// <summary>
-    /// ÒÆ³ı¶ÔÃûÎªnameÊÂ¼şµÄÌØ¶¨¼àÌı¡£
+    /// ç§»é™¤å¯¹åä¸ºnameäº‹ä»¶çš„ç‰¹å®šç›‘å¬ã€‚
     /// </summary>
     public void Remove(string name, Action<EventArgs> action) {
         if (action == null) {
@@ -93,15 +93,15 @@ public class EventModule : IGameModule
     }
 
     /// <summary>
-    /// ÒÆ³ıËùÓĞ¼àÌı¡£
+    /// ç§»é™¤æ‰€æœ‰ç›‘å¬ã€‚
     /// </summary>
     public void RemoveAll() { 
         events.Clear();
     }
 
     /// <summary>
-    /// DebugÓÃ£¬»ñÈ¡µ±Ç°µÄ¼àÌıĞÅÏ¢¡£
-    /// ÎªÁË°²È«Æğ¼û×öÁËÒ»ÏÂClone£¬ÑÚ¶úµÁÁå¡£
+    /// Debugç”¨ï¼Œè·å–å½“å‰çš„ç›‘å¬ä¿¡æ¯ã€‚
+    /// ä¸ºäº†å®‰å…¨èµ·è§åšäº†ä¸€ä¸‹Cloneï¼Œæ©è€³ç›—é“ƒã€‚
     /// </summary>
     public Dictionary<string, Action<EventArgs>> ReadEventsData() {
         return events.ToDictionary(s => s.Key, s => s.Value);
@@ -109,14 +109,14 @@ public class EventModule : IGameModule
 }
 
 /// <summary>
-/// Ä¬ÈÏµÄÊÂ¼ş²ÎÊı¡£
+/// é»˜è®¤çš„äº‹ä»¶å‚æ•°ã€‚
 /// </summary>
 public class EventArgs { 
     public object sender = null;
     public object[] args = null;
 
     /// <summary>
-    /// ·½±ãÊÂ¼ş´¥·¢Ê±ÁÙÊ±´´½¨²ÎÊı¡£
+    /// æ–¹ä¾¿äº‹ä»¶è§¦å‘æ—¶ä¸´æ—¶åˆ›å»ºå‚æ•°ã€‚
     /// </summary>
     public EventArgs(object _sender, params object[] _args) { 
         sender = _sender;
@@ -124,7 +124,7 @@ public class EventArgs {
     }
 
     /// <summary>
-    /// ·½±ãDebug£¬ÉÔÎ¢¸ñÊ½»¯Ò»ÏÂÊä³ö¡£
+    /// æ–¹ä¾¿Debugï¼Œç¨å¾®æ ¼å¼åŒ–ä¸€ä¸‹è¾“å‡ºã€‚
     /// </summary>
     public override string ToString()
     {

@@ -4,9 +4,9 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 /// <summary>
-/// ¿ò¼ÜÅäÖÃÎÄ¼ş£¬Í¬Ê±Ò²ÊÇÒ»¸ö¼ÓÔØµ½ÓÎÏ·ÖĞµÄÄ£¿é¡£
-/// Ö÷ÅäÖÃÎÄ¼ş£¬Èç¹ûĞŞ¸ÄÁËÎ»ÖÃĞèÒªĞŞ¸ÄFramework GlobalsÖĞ¶ÔÓ¦Â·¾¶¡£
-/// ÎªÁËÄÜÍ¬Ê±´ï³ÉÃâ³¡¾°ÎïÌå¡¢¿ÉÔÚinspectorÖĞ±à¼­¡¢¿É±»ÆäËûÄ£¿é¶ÁÈ¡£¬Õâ¸öÅäÖÃÎÄ¼şÒ²±»×ö³ÉÁËÒ»¸öÄ£¿é¡£Ô¤¼ÆÖ®ºóÆäËûµÄ×ÓÅäÖÃÎÄ¼ş¶¼»áÓÃÕâ¸öÅäÖÃÀ´reference¡£
+/// æ¡†æ¶é…ç½®æ–‡ä»¶ï¼ŒåŒæ—¶ä¹Ÿæ˜¯ä¸€ä¸ªåŠ è½½åˆ°æ¸¸æˆä¸­çš„æ¨¡å—ã€‚
+/// ä¸»é…ç½®æ–‡ä»¶ï¼Œå¦‚æœä¿®æ”¹äº†ä½ç½®éœ€è¦ä¿®æ”¹Framework Globalsä¸­å¯¹åº”è·¯å¾„ã€‚
+/// ä¸ºäº†èƒ½åŒæ—¶è¾¾æˆå…åœºæ™¯ç‰©ä½“ã€å¯åœ¨inspectorä¸­ç¼–è¾‘ã€å¯è¢«å…¶ä»–æ¨¡å—è¯»å–ï¼Œè¿™ä¸ªé…ç½®æ–‡ä»¶ä¹Ÿè¢«åšæˆäº†ä¸€ä¸ªæ¨¡å—ã€‚é¢„è®¡ä¹‹åå…¶ä»–çš„å­é…ç½®æ–‡ä»¶éƒ½ä¼šç”¨è¿™ä¸ªé…ç½®æ¥referenceã€‚
 /// </summary>
 public class FrameworkSettings : ScriptableObject, IGameModule
 {
@@ -17,7 +17,7 @@ public class FrameworkSettings : ScriptableObject, IGameModule
     public UISettings uiSettings;
 
     public void Init() {
-        ModuleDispatcher.Instance.Register(this); // ÒòÎªÅäÖÃÔÚÌØ¶¨µÄÊµÀıÖĞ£¬×¢²áÊ±ĞèÒªÌØ±ğ×¢²áthisÊµÀı¡£ÆäËû·½·¨»á´´½¨ĞÂµÄ¿ÕÅäÖÃ¡£
+        ModuleDispatcher.Instance.Register(this); // å› ä¸ºé…ç½®åœ¨ç‰¹å®šçš„å®ä¾‹ä¸­ï¼Œæ³¨å†Œæ—¶éœ€è¦ç‰¹åˆ«æ³¨å†Œthiså®ä¾‹ã€‚å…¶ä»–æ–¹æ³•ä¼šåˆ›å»ºæ–°çš„ç©ºé…ç½®ã€‚
         DevUtils.Log("Settings Load", "FrameworkSettings");
     }
 }

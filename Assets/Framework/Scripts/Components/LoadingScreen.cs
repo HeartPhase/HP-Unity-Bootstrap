@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ×î»ù´¡µÄ¼ÓÔØ»­Ãæ¡£
+/// æœ€åŸºç¡€çš„åŠ è½½ç”»é¢ã€‚
 /// </summary>
 public class LoadingScreen : MonoBehaviour
 {
@@ -18,16 +18,16 @@ public class LoadingScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// ÉèÖÃ½ø¶ÈÌõ£¨·¶Î§0-1£©¡£
-    /// ÖØÔØ´Ë·½·¨À´×Ô¶¨Òå¼ÓÔØ½ø¶ÈµÄ³ÊÏÖ·½Ê½¡£
+    /// è®¾ç½®è¿›åº¦æ¡ï¼ˆèŒƒå›´0-1ï¼‰ã€‚
+    /// é‡è½½æ­¤æ–¹æ³•æ¥è‡ªå®šä¹‰åŠ è½½è¿›åº¦çš„å‘ˆç°æ–¹å¼ã€‚
     /// </summary>
     public virtual void SetProgress(float progress) { 
         progressBar.size = progress;
     }
 
     /// <summary>
-    /// ¼ÓÔØÍê³ÉºóÏÔÊ¾¡°°´ÈÎÒâ¼ü¼ÌĞø¡±¡£
-    /// ÖØÔØ´Ë·½·¨À´×Ô¶¨Òå¼ÓÔØÍê³ÉµÄÈ·ÈÏ·½Ê½¡£
+    /// åŠ è½½å®Œæˆåæ˜¾ç¤ºâ€œæŒ‰ä»»æ„é”®ç»§ç»­â€ã€‚
+    /// é‡è½½æ­¤æ–¹æ³•æ¥è‡ªå®šä¹‰åŠ è½½å®Œæˆçš„ç¡®è®¤æ–¹å¼ã€‚
     /// </summary>
     public virtual void ToggleComplete() { 
         continueText.SetActive(true);

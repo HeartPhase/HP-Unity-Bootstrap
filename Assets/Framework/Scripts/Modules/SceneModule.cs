@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// ³¡¾°Ä£¿é¡£
-/// ¿ØÖÆ³¡¾°µÄ¼ÓÔØºÍ¼¤»î¡£
+/// åœºæ™¯æ¨¡å—ã€‚
+/// æ§åˆ¶åœºæ™¯çš„åŠ è½½å’Œæ¿€æ´»ã€‚
 /// </summary>
 public class SceneModule : MonoBehaviour, IGameModule
 {
@@ -23,9 +23,9 @@ public class SceneModule : MonoBehaviour, IGameModule
 
 
     /// <summary>
-    /// ÏÔÊ¾¼ÓÔØ»­Ãæ£¬¼ÓÔØÃûÎªnameµÄ³¡¾°¡£
+    /// æ˜¾ç¤ºåŠ è½½ç”»é¢ï¼ŒåŠ è½½åä¸ºnameçš„åœºæ™¯ã€‚
     /// </summary>
-    /// <param name="needConfirm">¼ÓÔØÍê±ÏºóÊÇ·ñĞèÒªÍæ¼ÒÈ·ÈÏ</param>
+    /// <param name="needConfirm">åŠ è½½å®Œæ¯•åæ˜¯å¦éœ€è¦ç©å®¶ç¡®è®¤</param>
     public void LoadLevel(string name, bool needConfirm = true) {
         if (loadingScreenPrefab == null)
         {
@@ -42,7 +42,7 @@ public class SceneModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// Òì²½¼ÓÔØ³¡¾°²¢Í¬²½¼ÓÔØ»­ÃæÉÏµÄ½ø¶ÈÌõ¡£
+    /// å¼‚æ­¥åŠ è½½åœºæ™¯å¹¶åŒæ­¥åŠ è½½ç”»é¢ä¸Šçš„è¿›åº¦æ¡ã€‚
     /// </summary>
     IEnumerator LoadLevelAsync(string name, Action onLoad) {
         AsyncOperation operation = SceneManager.LoadSceneAsync(name);
@@ -56,7 +56,7 @@ public class SceneModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ¼ÓÔØÍê³Éºó¸ø³ö°´ÈÎÒâ¼ü¼ÌĞøµÄÌáÊ¾¡£
+    /// åŠ è½½å®Œæˆåç»™å‡ºæŒ‰ä»»æ„é”®ç»§ç»­çš„æç¤ºã€‚
     /// </summary>
     private void LoadLevelCompleteConfirm() {
         loadingControl.ToggleComplete();
@@ -64,7 +64,7 @@ public class SceneModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ¼ÓÔØÍê³ÉºóÎŞĞèÈ·ÈÏ¡£
+    /// åŠ è½½å®Œæˆåæ— éœ€ç¡®è®¤ã€‚
     /// </summary>
     private void LoadLevelComplete()
     {
@@ -72,7 +72,7 @@ public class SceneModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ÈÎÒâ¼üºó¹Ø±Õ¼ÓÔØ»­Ãæ¡£
+    /// ä»»æ„é”®åå…³é—­åŠ è½½ç”»é¢ã€‚
     /// </summary>
     private void InputModule_Gameplay_AnyKey()
     {

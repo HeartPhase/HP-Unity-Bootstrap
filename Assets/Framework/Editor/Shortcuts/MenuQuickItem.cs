@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEditor;
 
 /// <summary>
-/// Ìí¼Óµ½Ö÷²Ëµ¥Framework/QuickItemsÀïµÄ¿ì½İ²Ù×÷¡£
+/// æ·»åŠ åˆ°ä¸»èœå•Framework/QuickItemsé‡Œçš„å¿«æ·æ“ä½œã€‚
 /// </summary>
 public class MenuQuickItem
 {
     /// <summary>
-    /// ´ò¿ªÏîÄ¿ÔÚÏµÍ³ÖĞµÄÊı¾İÄ¿Â¼£¨Ö÷ÒªÓÃÓÚ´æµµµÈ£©¡£
+    /// æ‰“å¼€é¡¹ç›®åœ¨ç³»ç»Ÿä¸­çš„æ•°æ®ç›®å½•ï¼ˆä¸»è¦ç”¨äºå­˜æ¡£ç­‰ï¼‰ã€‚
     /// </summary>
     [MenuItem("Framework/QuickItems/Open PersistentDataPath")]
     private static void OpenPersistentDataPath() {

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// ´øÀàĞÍµÄSaveItem»ùÀà¡£
-/// ºÃÏñ²¢Ã»ÓĞÊ²Ã´ÂÑÓÃ£¬ÁôÔÚÕâÀïµ±×÷¼ÍÄî¡£
+/// å¸¦ç±»å‹çš„SaveItemåŸºç±»ã€‚
+/// å¥½åƒå¹¶æ²¡æœ‰ä»€ä¹ˆåµç”¨ï¼Œç•™åœ¨è¿™é‡Œå½“ä½œçºªå¿µã€‚
 /// </summary>
-/// <typeparam name="T">CRTP£¬ÕâÑùÖ»ĞèÒªĞ´Ò»¸öLog·½·¨¡£</typeparam>
-/// <typeparam name="V">Ëù´æÊı¾İµÄÀàĞÍ¡£</typeparam>
+/// <typeparam name="T">CRTPï¼Œè¿™æ ·åªéœ€è¦å†™ä¸€ä¸ªLogæ–¹æ³•ã€‚</typeparam>
+/// <typeparam name="V">æ‰€å­˜æ•°æ®çš„ç±»å‹ã€‚</typeparam>
 [System.Obsolete("Typed SaveItem is not in use. NOT TESTED", false)]
 public abstract class ISaveItem<T, V> where T : ISaveItem<T, V>
 {
@@ -15,7 +15,7 @@ public abstract class ISaveItem<T, V> where T : ISaveItem<T, V>
     }
 
     /// <summary>
-    /// ½«´æµµÎÄ¼şÖĞµÄ×Ö·û´®×ª»»ÎªÒ»¶Ô¼üÖµ¡£
+    /// å°†å­˜æ¡£æ–‡ä»¶ä¸­çš„å­—ç¬¦ä¸²è½¬æ¢ä¸ºä¸€å¯¹é”®å€¼ã€‚
     /// </summary>
     public virtual KeyValuePair<string, V> Impl_Decode(string save)
     {
@@ -33,7 +33,7 @@ public abstract class ISaveItem<T, V> where T : ISaveItem<T, V>
     }
 
     /// <summary>
-    /// ½«Ò»¶Ô¼üÖµ×ª»»ÎªÓÃÓÚ´æµµµÄ×Ö·û´®¡£
+    /// å°†ä¸€å¯¹é”®å€¼è½¬æ¢ä¸ºç”¨äºå­˜æ¡£çš„å­—ç¬¦ä¸²ã€‚
     /// </summary>
     public virtual string Impl_Encode(KeyValuePair<string, V> data)
     {
@@ -41,17 +41,17 @@ public abstract class ISaveItem<T, V> where T : ISaveItem<T, V>
     }
 
     /// <summary>
-    /// ×Ö·û´®×ª»»ÎªÊı¾İÖµ¡£
+    /// å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•°æ®å€¼ã€‚
     /// </summary>
     public abstract bool TryParse(string _value, out V value);
 
     /// <summary>
-    /// Ã¿¸öÀàĞÍµÄÄ¬ÈÏÊı¾İ£¬ÓÃÓÚÊı¾İËğ»µÊ±Ìî²¹¡£
+    /// æ¯ä¸ªç±»å‹çš„é»˜è®¤æ•°æ®ï¼Œç”¨äºæ•°æ®æŸåæ—¶å¡«è¡¥ã€‚
     /// </summary>
     public abstract V DefaultValue { get; }
 }
 
-//ÒÔÏÂÎª¸÷¸öÀàĞÍµÄ¾ßÌåÊµÏÖ¡£
+//ä»¥ä¸‹ä¸ºå„ä¸ªç±»å‹çš„å…·ä½“å®ç°ã€‚
 
 [System.Obsolete("Typed SaveItem is not in use.", false)]
 public class IntSaveItem : ISaveItem<IntSaveItem, int>

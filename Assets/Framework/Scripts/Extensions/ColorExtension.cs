@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Color¿‡¿©’π
+/// ColorÁ±ªÊâ©Â±ï
 /// </summary>
 public static class ColorExtension
 {

@@ -5,25 +5,25 @@ using UnityEditor;
 using System.IO;
 
 /// <summary>
-/// ÃæÏòEditor¿ª·¢Ê±µÄĞ¡¹¤¾ß¡£
+/// é¢å‘Editorå¼€å‘æ—¶çš„å°å·¥å…·ã€‚
 /// </summary>
 public static class EditorUtils
 {
     /// <summary>
-    /// Éú³ÉĞÂPrefabµÄÂ·¾¶¡£
-    /// ÕâĞ©PrefabÍùÍùÒªÔÚÔËĞĞÊ±¼ÓÔØ£¬ËùÒÔÍ³Ò»·ÅÔÚResourcesÏÂ£¬ÇÒ²»±©Â¶¸øÓÃ»§ĞŞ¸Ä¡£
+    /// ç”Ÿæˆæ–°Prefabçš„è·¯å¾„ã€‚
+    /// è¿™äº›Prefabå¾€å¾€è¦åœ¨è¿è¡Œæ—¶åŠ è½½ï¼Œæ‰€ä»¥ç»Ÿä¸€æ”¾åœ¨Resourcesä¸‹ï¼Œä¸”ä¸æš´éœ²ç»™ç”¨æˆ·ä¿®æ”¹ã€‚
     /// </summary>
     static string PREFAB_TARGET_PATH = "Assets/Game/Resources/Prefabs/";
 
     public enum NewPrefabMode { 
-        OriginalAsBase, //Éú³ÉÔ­PrefabµÄVariant¡£
-        BrandNew //Éú³ÉÈ«ĞÂµÄPrefab¡£
+        OriginalAsBase, //ç”ŸæˆåŸPrefabçš„Variantã€‚
+        BrandNew //ç”Ÿæˆå…¨æ–°çš„Prefabã€‚
     }
 
     /// <summary>
-    /// ÒÔprefabÎªÄ£°åÉú³ÉĞÂµÄPrefab¡£
+    /// ä»¥prefabä¸ºæ¨¡æ¿ç”Ÿæˆæ–°çš„Prefabã€‚
     /// </summary>
-    /// <param name="prefab">´ÓÏîÄ¿Ö¸¶¨µÄÄ£°åPrefabÖĞÑ¡Ôñ</param>
+    /// <param name="prefab">ä»é¡¹ç›®æŒ‡å®šçš„æ¨¡æ¿Prefabä¸­é€‰æ‹©</param>
     /// <returns></returns>
     public static GameObject CreateFromPrefab(Internal_PrefabEnum prefab, NewPrefabMode mode) {
         string prefabPath = prefab.GetDescription();
@@ -47,15 +47,15 @@ public static class EditorUtils
     }
 
     /// <summary>
-    /// ĞÂPrefabµÄ´æ·ÅÂ·¾¶¡£
-    /// ÀıÈç£ºÓÉPopupWindowÉú³ÉµÄPrefab£¬ÒÀ´Î»áÊÇResources/Prefabs/PopupWindow/PopupWindow_0¡¢
-    /// Resources/Prefabs/PopupWindow/PopupWindow_1µÈ¡£
+    /// æ–°Prefabçš„å­˜æ”¾è·¯å¾„ã€‚
+    /// ä¾‹å¦‚ï¼šç”±PopupWindowç”Ÿæˆçš„Prefabï¼Œä¾æ¬¡ä¼šæ˜¯Resources/Prefabs/PopupWindow/PopupWindow_0ã€
+    /// Resources/Prefabs/PopupWindow/PopupWindow_1ç­‰ã€‚
     /// </summary>
     private static string ConstructPrefabPath(string name, int index) => PREFAB_TARGET_PATH + name + "/" + name + "_" + index.ToString() + ".prefab";
 
 
     /// <summary>
-    /// ·´¹ıÀ´Àí½â¾ÍÊÇ±¸·İ»Ö¸´µÄ½á¹ûÁË£¬Í¨ÓÃÒ»ÏÂ¡£
+    /// åè¿‡æ¥ç†è§£å°±æ˜¯å¤‡ä»½æ¢å¤çš„ç»“æœäº†ï¼Œé€šç”¨ä¸€ä¸‹ã€‚
     /// </summary>
     public enum BackUpResult 
     { 
@@ -66,9 +66,9 @@ public static class EditorUtils
     }
 
     /// <summary>
-    /// ±¸·İÎÄ¼ş£¬¼Ó¸öbak·ÅÔÚÅÔ±ß¡£
+    /// å¤‡ä»½æ–‡ä»¶ï¼ŒåŠ ä¸ªbakæ”¾åœ¨æ—è¾¹ã€‚
     /// </summary>
-    /// <param name="path">ĞèÒª±¸·İµÄÎÄ¼şÂ·¾¶</param>
+    /// <param name="path">éœ€è¦å¤‡ä»½çš„æ–‡ä»¶è·¯å¾„</param>
     public static BackUpResult BackUpTextFile(string path)
     {
         string backUpPath = path + ".bak";
@@ -81,9 +81,9 @@ public static class EditorUtils
     }
 
     /// <summary>
-    /// £¨´Ó±¸·İÖĞ£©»Ö¸´ÎÄ¼ş¡£
+    /// ï¼ˆä»å¤‡ä»½ä¸­ï¼‰æ¢å¤æ–‡ä»¶ã€‚
     /// </summary>
-    /// <param name="path">±»»Ö¸´µÄÎÄ¼şÂ·¾¶£¨²»ÊÇ±¸·İÎÄ¼ş£©</param>
+    /// <param name="path">è¢«æ¢å¤çš„æ–‡ä»¶è·¯å¾„ï¼ˆä¸æ˜¯å¤‡ä»½æ–‡ä»¶ï¼‰</param>
     /// <returns></returns>
     public static BackUpResult RestoreTextFile(string path)
     {

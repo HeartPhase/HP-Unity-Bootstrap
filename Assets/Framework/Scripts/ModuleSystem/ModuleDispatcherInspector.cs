@@ -4,8 +4,8 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 /// <summary>
-/// Ä£¿é¼àÊÓÆ÷¡£
-/// ModuleDispatcher³õÊ¼»¯Ê±´îÔØÔÚModule Center£¬ÓÃÓÚÔÚÔËĞĞÊ±¼ì²éÒÑ×¢²áµÄÄ£¿é¼°ReferenceÁĞ±í¡£
+/// æ¨¡å—ç›‘è§†å™¨ã€‚
+/// ModuleDispatcheråˆå§‹åŒ–æ—¶æ­è½½åœ¨Module Centerï¼Œç”¨äºåœ¨è¿è¡Œæ—¶æ£€æŸ¥å·²æ³¨å†Œçš„æ¨¡å—åŠReferenceåˆ—è¡¨ã€‚
 /// </summary>
 public class ModuleDispatcherInspector : MonoBehaviour
 {

@@ -6,19 +6,19 @@ using System.IO;
 using Sirenix.OdinInspector;
 
 /// <summary>
-/// PrefabÄ£°åÅäÖÃ¡£
-/// ÒÔÏÂ´úÂë·Ç³£±©Á¦£¬»¹ÓĞ£¨Î±£©ÈË¹¤ÖÇÄÜ³öÃ»£¬¹âÃôĞÔñ²ğï¾¯¸æ¡£
+/// Prefabæ¨¡æ¿é…ç½®ã€‚
+/// ä»¥ä¸‹ä»£ç éå¸¸æš´åŠ›ï¼Œè¿˜æœ‰ï¼ˆä¼ªï¼‰äººå·¥æ™ºèƒ½å‡ºæ²¡ï¼Œå…‰æ•æ€§ç™«ç—«è­¦å‘Šã€‚
 /// </summary>
 [CreateAssetMenu(menuName ="Framework Settings/Prefab Settings")]
 public class PrefabSettings : ScriptableObject
 {
     [PropertySpace(16)]
     [HideLabel, DisplayAsString(false)]
-    public string info; //ÓÃÀ´ÔÚInspectorÀïÏÔÊ¾ĞÅÏ¢¡£
+    public string info; //ç”¨æ¥åœ¨Inspectoré‡Œæ˜¾ç¤ºä¿¡æ¯ã€‚
     [PropertySpace(16)]
 
 
-    // Ò»Ğ©Ä¬ÈÏÂ·¾¶£¬Ò»°ãÀ´Ëµ¿ÉÒÔ²»¸Ä°É¡£
+    // ä¸€äº›é»˜è®¤è·¯å¾„ï¼Œä¸€èˆ¬æ¥è¯´å¯ä»¥ä¸æ”¹å§ã€‚
     #region Paths
     [SerializeField] string StandardisedPrefab_Path = "Assets/Framework/StandardisedPrefabs";
 
@@ -28,7 +28,7 @@ public class PrefabSettings : ScriptableObject
     [SerializeField] string CONTEXT_FILE = "Assets/Framework/Settings/PrefabSettings/Internal_ContextMenu.cs";
     #endregion
 
-    // ÏÔÊ¾Á½¸öÉú³É½Å±¾ÓĞÃ»ÓĞ±¸·İ¡£
+    // æ˜¾ç¤ºä¸¤ä¸ªç”Ÿæˆè„šæœ¬æœ‰æ²¡æœ‰å¤‡ä»½ã€‚
     [ReadOnly]
     [SerializeField] bool enum_BackUpReady;
 
@@ -37,7 +37,7 @@ public class PrefabSettings : ScriptableObject
 
     
     /// <summary>
-    /// ¸ù¾İÄ£°åÎÄ¼ş¼ĞÒ»¼üÉú³ÉÄ£°åÃ¶¾ÙºÍÓÒ¼ü²Ëµ¥¡£
+    /// æ ¹æ®æ¨¡æ¿æ–‡ä»¶å¤¹ä¸€é”®ç”Ÿæˆæ¨¡æ¿æšä¸¾å’Œå³é”®èœå•ã€‚
     /// </summary>
     [Button("Set Up")]
     void SetUp() {
@@ -49,7 +49,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// »ñÈ¡ÎÄ¼ş¼ĞÖĞËùÓĞPrefabµÄÂ·¾¶¡£
+    /// è·å–æ–‡ä»¶å¤¹ä¸­æ‰€æœ‰Prefabçš„è·¯å¾„ã€‚
     /// </summary>
     private void ReadPrefabs() {
         string[] guids = AssetDatabase.FindAssets("t:prefab", new[] {StandardisedPrefab_Path});
@@ -60,7 +60,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// ½«Ä£°åPrefabÃû³ÆºÍÂ·¾¶µÄ¶ÔÓ¦¹ØÏµ´æÔÚEnumÀï£¬·½±ãÖ®ºóÔÚ´úÂëÀïµ÷ÓÃ¡£
+    /// å°†æ¨¡æ¿Prefabåç§°å’Œè·¯å¾„çš„å¯¹åº”å…³ç³»å­˜åœ¨Enumé‡Œï¼Œæ–¹ä¾¿ä¹‹ååœ¨ä»£ç é‡Œè°ƒç”¨ã€‚
     /// </summary>
     void WritePrefabsEnumFile() {
         if (prefabPaths.Count == 0) ReadPrefabs();
@@ -84,7 +84,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// Éú³ÉHierarchy£¨ÒÔ¼°GameObject²Ëµ¥£©ÖĞµÄÑ¡Ïî£¬·½±ãÖ±½ÓÓÒ¼üÌ×Ä£°å¡£
+    /// ç”ŸæˆHierarchyï¼ˆä»¥åŠGameObjectèœå•ï¼‰ä¸­çš„é€‰é¡¹ï¼Œæ–¹ä¾¿ç›´æ¥å³é”®å¥—æ¨¡æ¿ã€‚
     /// </summary>
     void WriteContextMenuFile()
     {
@@ -109,11 +109,11 @@ public class PrefabSettings : ScriptableObject
         File.WriteAllText(CONTEXT_FILE, contextFile);
     }
 
-    //¿ÉÄÜ²¢Ã»ÓĞÊ²Ã´ÂÑÓÃ£¬ÏÈĞ´ÔÚÕâÀï
+    //å¯èƒ½å¹¶æ²¡æœ‰ä»€ä¹ˆåµç”¨ï¼Œå…ˆå†™åœ¨è¿™é‡Œ
     #region BackUp and Restore
 
     /// <summary>
-    /// ±¸·İEnumÎÄ¼ş¡£
+    /// å¤‡ä»½Enumæ–‡ä»¶ã€‚
     /// </summary>
     [Button("Back up Enum file")]
     void BackUpEnum()
@@ -128,7 +128,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// »Ö¸´EnumÎÄ¼ş¡£
+    /// æ¢å¤Enumæ–‡ä»¶ã€‚
     /// </summary>
     [EnableIf("enum_BackUpReady")]
     [Button("Restore Enum file")]
@@ -140,7 +140,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// ±¸·İContext½Å±¾ÎÄ¼ş¡£
+    /// å¤‡ä»½Contextè„šæœ¬æ–‡ä»¶ã€‚
     /// </summary>
     [Button("Back up Context file")]
     void BackUpContext()
@@ -155,7 +155,7 @@ public class PrefabSettings : ScriptableObject
     }
 
     /// <summary>
-    /// »Ö¸´ContextÎÄ¼ş¡£
+    /// æ¢å¤Contextæ–‡ä»¶ã€‚
     /// </summary>
     [EnableIf("context_BackUpReady")]
     [Button("Restore Enum file")]

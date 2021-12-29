@@ -4,7 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 /// <summary>
-/// ¼ÇÂ¼²¢SerializeËùÓĞUIWindow×ÓÀàµ½Prefab AssetµÄ°ó¶¨¡£
+/// è®°å½•å¹¶Serializeæ‰€æœ‰UIWindowå­ç±»åˆ°Prefab Assetçš„ç»‘å®šã€‚
 /// </summary>
 [System.Serializable]
 public class UIWindowBindings
@@ -16,7 +16,7 @@ public class UIWindowBindings
     }
 
     /// <summary>
-    /// Í¨¹ıÀàĞÍÃû»ñÈ¡Ëù°ó¶¨µÄPrefab¡£
+    /// é€šè¿‡ç±»å‹åè·å–æ‰€ç»‘å®šçš„Prefabã€‚
     /// </summary>
     public GameObject GetPrefab(string name) {
         if (bindings.Exists(b => b.windowName == name))
@@ -31,7 +31,7 @@ public class UIWindowBindings
     }
 
     /// <summary>
-    /// Ìí¼ÓÒ»Ìõ°ó¶¨µ½UI SettingsÀï
+    /// æ·»åŠ ä¸€æ¡ç»‘å®šåˆ°UI Settingsé‡Œ
     /// </summary>
     public void AddBinding(string name, string prefabPath) {
         if (prefabPath == null) {
@@ -48,7 +48,7 @@ public class UIWindowBindings
     } 
 
     /// <summary>
-    /// ÓÃÓÚ¼ÇÂ¼UIWindow×ÓÀàµ½¶ÔÓ¦Prefab×ÊÔ´Â·¾¶µÄ°ó¶¨¡£
+    /// ç”¨äºè®°å½•UIWindowå­ç±»åˆ°å¯¹åº”Prefabèµ„æºè·¯å¾„çš„ç»‘å®šã€‚
     /// </summary>
     [System.Serializable]
     public class UIWindowBinding

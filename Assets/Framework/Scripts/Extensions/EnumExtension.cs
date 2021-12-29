@@ -3,14 +3,14 @@ using System.Reflection;
 using System;
 
 /// <summary>
-/// EnumÀàÀ©Õ¹¡£
+/// Enumç±»æ‰©å±•ã€‚
 /// </summary>
 public static class EnumExtension
 {
     /// <summary>
-    /// »ñÈ¡EnumÀïÃ¿¸öÃ¶¾ÙÍ·ÉÏÖ¸¶¨AttributeµÄÄÚÈİ¡£
+    /// è·å–Enumé‡Œæ¯ä¸ªæšä¸¾å¤´ä¸ŠæŒ‡å®šAttributeçš„å†…å®¹ã€‚
     /// </summary>
-    /// <typeparam name="T">AttributeÀàĞÍ</typeparam>
+    /// <typeparam name="T">Attributeç±»å‹</typeparam>
     public static T GetAttr<T> (this Enum e) where T : Attribute
     {
         var memInfo = e.GetType().GetMember(e.ToString());
@@ -19,7 +19,7 @@ public static class EnumExtension
     }
 
     /// <summary>
-    /// »ñÈ¡EnumÀïÃ¿¸öÃ¶¾ÙÍ·ÉÏµÄDescription¡£
+    /// è·å–Enumé‡Œæ¯ä¸ªæšä¸¾å¤´ä¸Šçš„Descriptionã€‚
     /// </summary>
     public static string GetDescription(this Enum e) {
         var memInfo = e.GetType().GetMember(e.ToString());

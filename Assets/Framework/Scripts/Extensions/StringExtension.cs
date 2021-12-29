@@ -9,7 +9,7 @@ public static class StringExtension
     private static byte[] Key => FrameworkGlobals.ENCRYPTION_KEY;
 
     /// <summary>
-    /// ¼ÓÃÜÒ»¸ö×Ö·û´®£¬Èç¹ûĞèÒªÉÔÎ¢È·±£Êı¾İ°²È«£¬ÇëĞŞ¸ÄÈ«¾ÖÅäÖÃÖĞµÄ¼ÓÃÜÃÜÔ¿¡£
+    /// åŠ å¯†ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå¦‚æœéœ€è¦ç¨å¾®ç¡®ä¿æ•°æ®å®‰å…¨ï¼Œè¯·ä¿®æ”¹å…¨å±€é…ç½®ä¸­çš„åŠ å¯†å¯†é’¥ã€‚
     /// </summary>
     public static string Encrypt(this string ctx) { 
         SymmetricAlgorithm algo = Aes.Create();
@@ -26,7 +26,7 @@ public static class StringExtension
     }
 
     /// <summary>
-    /// ½âÃÜÒ»¸ö×Ö·û´®¡£
+    /// è§£å¯†ä¸€ä¸ªå­—ç¬¦ä¸²ã€‚
     /// </summary>
     public static string Decrypt(this string ctx) {
         SymmetricAlgorithm algo = Aes.Create();

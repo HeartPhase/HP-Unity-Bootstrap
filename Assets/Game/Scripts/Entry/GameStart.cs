@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ÓÎÏ·µÄÆô¶¯½Å±¾¡£
-/// »áÔÚ³¡¾°¼ÓÔØºóÔØÈëËùÓĞÄ£¿é¡£
+/// æ¸¸æˆçš„å¯åŠ¨è„šæœ¬ã€‚
+/// ä¼šåœ¨åœºæ™¯åŠ è½½åè½½å…¥æ‰€æœ‰æ¨¡å—ã€‚
 /// </summary>
 public static class GameStart
 {
@@ -16,8 +16,8 @@ public static class GameStart
     }
     
     /// <summary>
-    /// £¨´Ó×ÊÔ´ÎÄ¼şÖĞ£©ÔØÈëÅäÖÃ¡£
-    /// Ä¿Ç°Ö»ÓĞÒ»¸öÈ«¾ÖµÄFrameworkSettings¡£
+    /// ï¼ˆä»èµ„æºæ–‡ä»¶ä¸­ï¼‰è½½å…¥é…ç½®ã€‚
+    /// ç›®å‰åªæœ‰ä¸€ä¸ªå…¨å±€çš„FrameworkSettingsã€‚
     /// </summary>
     public static void LoadSettings() {
         FrameworkSettings settings = FrameworkGlobals.DEFAULT_SETTINGS;
@@ -25,8 +25,8 @@ public static class GameStart
     }
 
     /// <summary>
-    /// ÔØÈëÄ£¿é¡£
-    /// ¼ÈÈ»¶¼ÊÇ£¨¼¸ºõ£©±ØĞëµÄÄ£¿éÎªÊ²Ã´ÒªÈÃÓÃ»§×Ô¶¨Òå£¿Ğ´ËÀĞ´ËÀ¡£
+    /// è½½å…¥æ¨¡å—ã€‚
+    /// æ—¢ç„¶éƒ½æ˜¯ï¼ˆå‡ ä¹ï¼‰å¿…é¡»çš„æ¨¡å—ä¸ºä»€ä¹ˆè¦è®©ç”¨æˆ·è‡ªå®šä¹‰ï¼Ÿå†™æ­»å†™æ­»ã€‚
     /// </summary>
     public static void LoadModules() {
         SceneModule.Init();

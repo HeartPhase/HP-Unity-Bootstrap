@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// UIÄ£¿é¡£¿ØÖÆ³¡¾°ÖĞ´°¿Ú¡¢½çÃæµÈµÄÏÔÊ¾¡£
+/// UIæ¨¡å—ã€‚æ§åˆ¶åœºæ™¯ä¸­çª—å£ã€ç•Œé¢ç­‰çš„æ˜¾ç¤ºã€‚
 /// </summary>
 public class UIModule : MonoBehaviour, IGameModule
 {
     /// <summary>
-    /// ×¢²áÄ£¿é¡£
+    /// æ³¨å†Œæ¨¡å—ã€‚
     /// </summary>
     public static void Init()
     {
@@ -30,7 +30,7 @@ public class UIModule : MonoBehaviour, IGameModule
     private UISettings uiSettings;
 
     /// <summary>
-    /// ´´½¨Ö÷CanvasºÍUI»º´æ,¶ÁÈ¡UIÄ£¿éÅäÖÃ¡£
+    /// åˆ›å»ºä¸»Canvaså’ŒUIç¼“å­˜,è¯»å–UIæ¨¡å—é…ç½®ã€‚
     /// </summary>
     private void Awake()
     {
@@ -42,8 +42,8 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´´½¨Ö÷Canvas¡£
-    /// Õâ¸öÂ·¾¶ÊÇĞ´ËÀµÄ£¬ÒòÎª²»ĞèÒª¸Ä¶¯¡£
+    /// åˆ›å»ºä¸»Canvasã€‚
+    /// è¿™ä¸ªè·¯å¾„æ˜¯å†™æ­»çš„ï¼Œå› ä¸ºä¸éœ€è¦æ”¹åŠ¨ã€‚
     /// </summary>
     public static void CreateMainCanvas() {
         mainCanvasGO = Instantiate(Resources.Load<GameObject>("Components/MainCanvas/MainCanvas"));
@@ -55,10 +55,10 @@ public class UIModule : MonoBehaviour, IGameModule
     #region Window Layer
     
     /// <summary>
-    /// ´ò¿ªÒ»¸öUIWindow¡£
+    /// æ‰“å¼€ä¸€ä¸ªUIWindowã€‚
     /// </summary>
-    /// <typeparam name="T">Òª´ò¿ªµÄUIWindowµÄÀàĞÍ</typeparam>
-    /// <returns>ËùÏÔÊ¾´°¿ÚµÄGameObject</returns>
+    /// <typeparam name="T">è¦æ‰“å¼€çš„UIWindowçš„ç±»å‹</typeparam>
+    /// <returns>æ‰€æ˜¾ç¤ºçª—å£çš„GameObject</returns>
     public GameObject ShowWindow<T>() where T : UIWindow
     {
         string name = typeof(T).Name;
@@ -66,10 +66,10 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´ò¿ªÒ»¸öUIWindow¡£
+    /// æ‰“å¼€ä¸€ä¸ªUIWindowã€‚
     /// </summary>
-    /// <param name="name">Òª´ò¿ªµÄUIWindowµÄÀàĞÍÃû</param>
-    /// <returns>ËùÏÔÊ¾´°¿ÚµÄGameObject</returns>
+    /// <param name="name">è¦æ‰“å¼€çš„UIWindowçš„ç±»å‹å</param>
+    /// <returns>æ‰€æ˜¾ç¤ºçª—å£çš„GameObject</returns>
     public GameObject ShowWindow(string name)
     {
         if (cachedWindows.ContainsKey(name))
@@ -83,11 +83,11 @@ public class UIModule : MonoBehaviour, IGameModule
     }
     
     /// <summary>
-    /// ´ò¿ª¶à¸öÍ¬ÀàĞÍ´°¿Ú¡£
-    /// ÒòÎª¸´ÊıÍ¬Àà´°¿ÚµÄ´æÔÚ£¬´ò¿ªºó²»ÄÜÖ±½ÓÍ¨¹ıÀàĞÍ/Ãû³Æ¹Ø±Õ£¬ÇëÎñ±Ø±£´æ·µ»ØµÄUnique nameÀ´Î¬»¤ÉúÃüÖÜÆÚ¡£
+    /// æ‰“å¼€å¤šä¸ªåŒç±»å‹çª—å£ã€‚
+    /// å› ä¸ºå¤æ•°åŒç±»çª—å£çš„å­˜åœ¨ï¼Œæ‰“å¼€åä¸èƒ½ç›´æ¥é€šè¿‡ç±»å‹/åç§°å…³é—­ï¼Œè¯·åŠ¡å¿…ä¿å­˜è¿”å›çš„Unique nameæ¥ç»´æŠ¤ç”Ÿå‘½å‘¨æœŸã€‚
     /// </summary>
-    /// <typeparam name="T">Òª´ò¿ªµÄUIWindowµÄÀàĞÍ</typeparam>
-    /// <returns>ËùÏÔÊ¾´°¿ÚµÄGameObjectºÍUnique name</returns>
+    /// <typeparam name="T">è¦æ‰“å¼€çš„UIWindowçš„ç±»å‹</typeparam>
+    /// <returns>æ‰€æ˜¾ç¤ºçª—å£çš„GameObjectå’ŒUnique name</returns>
     public Tuple<GameObject, string> ShowWindowMultiple<T>() where T : UIWindow
     {
         GameObject window = uiSettings.GetUIWindow<T>();
@@ -96,11 +96,11 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´ò¿ª¶à¸öÍ¬ÀàĞÍ´°¿Ú¡£
-    /// ÒòÎª¸´ÊıÍ¬Àà´°¿ÚµÄ´æÔÚ£¬´ò¿ªºó²»ÄÜÖ±½ÓÍ¨¹ıÀàĞÍ/Ãû³Æ¹Ø±Õ£¬ÇëÎñ±Ø±£´æ·µ»ØµÄUnique nameÀ´Î¬»¤ÉúÃüÖÜÆÚ¡£
+    /// æ‰“å¼€å¤šä¸ªåŒç±»å‹çª—å£ã€‚
+    /// å› ä¸ºå¤æ•°åŒç±»çª—å£çš„å­˜åœ¨ï¼Œæ‰“å¼€åä¸èƒ½ç›´æ¥é€šè¿‡ç±»å‹/åç§°å…³é—­ï¼Œè¯·åŠ¡å¿…ä¿å­˜è¿”å›çš„Unique nameæ¥ç»´æŠ¤ç”Ÿå‘½å‘¨æœŸã€‚
     /// </summary>
-    /// <param name="name">Òª´ò¿ªµÄUIWindowµÄÀàĞÍÃû</param>
-    /// <returns>ËùÏÔÊ¾´°¿ÚµÄGameObjectºÍUnique name</returns>
+    /// <param name="name">è¦æ‰“å¼€çš„UIWindowçš„ç±»å‹å</param>
+    /// <returns>æ‰€æ˜¾ç¤ºçª—å£çš„GameObjectå’ŒUnique name</returns>
     public Tuple<GameObject, string> ShowWindowMultiple(string name)
     {
         GameObject window = uiSettings.GetUIWindow(name);
@@ -109,9 +109,9 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´ò¿ªÒ»¸öUIWindow¡£
+    /// æ‰“å¼€ä¸€ä¸ªUIWindowã€‚
     /// </summary>
-    /// <returns>ËùÏÔÊ¾´°¿ÚµÄGameObject</returns>
+    /// <returns>æ‰€æ˜¾ç¤ºçª—å£çš„GameObject</returns>
     private GameObject Internal_ShowWindow(GameObject window, string name)
     {
         if (window == null) return null;
@@ -124,9 +124,9 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// Òş²ØÒ»¸öUIWindow¡£
+    /// éšè—ä¸€ä¸ªUIWindowã€‚
     /// </summary>
-    /// <typeparam name="T">ÒªÒş²ØµÄUIWindowµÄÀàĞÍ</typeparam>
+    /// <typeparam name="T">è¦éšè—çš„UIWindowçš„ç±»å‹</typeparam>
     public void HideWindow<T>() where T : UIWindow
     {
         string name = typeof(T).Name;
@@ -134,9 +134,9 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// Òş²ØÒ»¸öUIWindow¡£
+    /// éšè—ä¸€ä¸ªUIWindowã€‚
     /// </summary>
-    /// <param name="name">ÒªÒş²ØµÄUIWindowµÄUnique Name</param>
+    /// <param name="name">è¦éšè—çš„UIWindowçš„Unique Name</param>
     public void HideWindow(string name)
     {
         if (cachedWindows.ContainsKey(name))
@@ -150,10 +150,10 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´İ»ÙÒ»¸öUIWindow¡£
-    /// »á´Ó»º´æÖĞÉ¾³ı£¬ÔÙ´ÎÏÔÊ¾»áÖØĞÂÉú³É¡£
+    /// æ‘§æ¯ä¸€ä¸ªUIWindowã€‚
+    /// ä¼šä»ç¼“å­˜ä¸­åˆ é™¤ï¼Œå†æ¬¡æ˜¾ç¤ºä¼šé‡æ–°ç”Ÿæˆã€‚
     /// </summary>
-    /// <typeparam name="T">Òª´İ»ÙµÄUIWindowµÄÀàĞÍ</typeparam>
+    /// <typeparam name="T">è¦æ‘§æ¯çš„UIWindowçš„ç±»å‹</typeparam>
     public void DestroyWindow<T>() where T : UIWindow
     {
         string name = typeof(T).Name;
@@ -161,10 +161,10 @@ public class UIModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´İ»ÙÒ»¸öUIWindow¡£
-    /// »á´Ó»º´æÖĞÉ¾³ı£¬ÔÙ´ÎÏÔÊ¾»áÖØĞÂÉú³É¡£
+    /// æ‘§æ¯ä¸€ä¸ªUIWindowã€‚
+    /// ä¼šä»ç¼“å­˜ä¸­åˆ é™¤ï¼Œå†æ¬¡æ˜¾ç¤ºä¼šé‡æ–°ç”Ÿæˆã€‚
     /// </summary>
-    /// <param name="name">Òª´İ»ÙµÄUIWindowµÄUnique Name</param>
+    /// <param name="name">è¦æ‘§æ¯çš„UIWindowçš„Unique Name</param>
     public void DestroyWindow(string name)
     {
         if (cachedWindows.ContainsKey(name))

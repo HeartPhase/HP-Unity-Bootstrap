@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ��Ϸ��ģ����̳еĽӿڡ�
+/// 游戏内模块需继承的接口。
 /// </summary>
 public interface IGameModule {
 }

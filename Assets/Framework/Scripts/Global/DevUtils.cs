@@ -5,24 +5,24 @@ using UnityEngine;
 using System.Runtime.CompilerServices;
 
 /// <summary>
-/// ¿ª·¢Ê±µÄÍ¨ÓÃĞ¡¹¤¾ß¡£
+/// å¼€å‘æ—¶çš„é€šç”¨å°å·¥å…·ã€‚
 /// </summary>
 public static class DevUtils
 {
     /// <summary>
-    /// UnityÖĞDebug.Log()µÄÌ×¿Ç£¬»»³ÉÒ»¸öÉÔÎ¢·½±ã¿´µÄÊä³ö¡£
-    /// ¿ÉÒÔÖ¸¶¨'·¢ÑÔÕß'»ò×Ô¶¯»ñÈ¡µ÷ÓÃÁËÕâ¸öLogµÄ·½·¨¡£
+    /// Unityä¸­Debug.Log()çš„å¥—å£³ï¼Œæ¢æˆä¸€ä¸ªç¨å¾®æ–¹ä¾¿çœ‹çš„è¾“å‡ºã€‚
+    /// å¯ä»¥æŒ‡å®š'å‘è¨€è€…'æˆ–è‡ªåŠ¨è·å–è°ƒç”¨äº†è¿™ä¸ªLogçš„æ–¹æ³•ã€‚
     /// </summary>
-    /// <param name="content">ConsoleÊä³öÄÚÈİ</param>
-    /// <param name="caller">Ö¸¶¨'·¢ÑÔÕß'£¬Ä¬ÈÏÎªµ÷ÓÃÕßµÄ·½·¨Ãû</param>
+    /// <param name="content">Consoleè¾“å‡ºå†…å®¹</param>
+    /// <param name="caller">æŒ‡å®š'å‘è¨€è€…'ï¼Œé»˜è®¤ä¸ºè°ƒç”¨è€…çš„æ–¹æ³•å</param>
     public static void Log(object content, [CallerMemberName] string caller = "Unknown") {
         Debug.Log(string.Format("[{0}] : {1}", caller, content));
     }
 
     /// <summary>
-    /// Ö»ÓĞ8Î»µÄUUID string£¬·½±ã¶Á£¬Ó¦¸ÃÒ²²»Ì«ÈİÒ×ÖØ¸´°É¡£
+    /// åªæœ‰8ä½çš„UUID stringï¼Œæ–¹ä¾¿è¯»ï¼Œåº”è¯¥ä¹Ÿä¸å¤ªå®¹æ˜“é‡å¤å§ã€‚
     /// </summary>
-    /// <returns>8¸ö×Ö·û³¤µÄUUID string</returns>
+    /// <returns>8ä¸ªå­—ç¬¦é•¿çš„UUID string</returns>
     public static string SimpleGuid()
     {
         return Guid.NewGuid().ToString().Substring(0,8);

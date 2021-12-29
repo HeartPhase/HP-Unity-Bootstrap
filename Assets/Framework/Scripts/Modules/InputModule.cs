@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// ÊäÈëÄ£¿é¡£
-/// ¼ò»¯ÊäÈëÊÂ¼ş¶ÁÈ¡µÄ¿ØÖÆºÍ·Ö·¢¡£
+/// è¾“å…¥æ¨¡å—ã€‚
+/// ç®€åŒ–è¾“å…¥äº‹ä»¶è¯»å–çš„æ§åˆ¶å’Œåˆ†å‘ã€‚
 /// </summary>
 public class InputModule : MonoBehaviour, IGameModule
 {
@@ -15,23 +15,23 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// Êó±ê¹öÂÖ
+    /// é¼ æ ‡æ»šè½®
     /// </summary>
     public static event Action<Vector2> Gameplay_MouseScroll = delegate { };
     /// <summary>
-    /// WASD »ò ·½Ïò¼ü
+    /// WASD æˆ– æ–¹å‘é”®
     /// </summary>
     public static event Action<Vector2> Gameplay_Movement = delegate { };
     /// <summary>
-    /// Êó±ê¿ØÖÆ¾µÍ·ÒÆ¶¯
+    /// é¼ æ ‡æ§åˆ¶é•œå¤´ç§»åŠ¨
     /// </summary>
     public static event Action<Vector2> PersonPerspective_Camera = delegate { };
     /// <summary>
-    /// ½»»¥/Ê¹ÓÃ/È·ÈÏ
+    /// äº¤äº’/ä½¿ç”¨/ç¡®è®¤
     /// </summary>
     public static event Action Gameplay_Interact = delegate { };
     /// <summary>
-    /// ĞèÒªµÚ¶ş¸ö½»»¥°´Å¥»òÆäËûÇø·ÖÊ±Ê¹ÓÃ
+    /// éœ€è¦ç¬¬äºŒä¸ªäº¤äº’æŒ‰é’®æˆ–å…¶ä»–åŒºåˆ†æ—¶ä½¿ç”¨
     /// </summary>
     public static event Action Gameplay_Use = delegate { };
 
@@ -44,7 +44,7 @@ public class InputModule : MonoBehaviour, IGameModule
     private static DefaultInputAction input;
 
     /// <summary>
-    /// ÆôÓÃ¿ò¼ÜÄ¬ÈÏµÄInput Action
+    /// å¯ç”¨æ¡†æ¶é»˜è®¤çš„Input Action
     /// </summary>
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// °ó¶¨ËùÓĞµÄÊäÈëÊÂ¼ş
+    /// ç»‘å®šæ‰€æœ‰çš„è¾“å…¥äº‹ä»¶
     /// </summary>
     private void BindInputActions()
     {
@@ -101,10 +101,10 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ´ò¿ª»ò¹Ø±ÕÖ¸¶¨µÄÊäÈë×é¡£
+    /// æ‰“å¼€æˆ–å…³é—­æŒ‡å®šçš„è¾“å…¥ç»„ã€‚
     /// </summary>
-    /// <param name="actions">ÊäÈë×éµÄÃû³Æ</param>
-    /// <param name="on">´ò¿ª»¹ÊÇ¹Ø±Õ</param>
+    /// <param name="actions">è¾“å…¥ç»„çš„åç§°</param>
+    /// <param name="on">æ‰“å¼€è¿˜æ˜¯å…³é—­</param>
     public void ToggleActions(string actions, bool on)
     {
         InputActionMap map = input.asset.FindActionMap(actions);
@@ -118,17 +118,17 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// Í¨¹ıInput MappingÀïµÄÂ·¾¶»ñÈ¡¶ÔÓ¦µÄInputAction¡£
+    /// é€šè¿‡Input Mappingé‡Œçš„è·¯å¾„è·å–å¯¹åº”çš„InputActionã€‚
     /// </summary>
-    /// <param name="actionHierarchyName">ĞÎÈç"Gameplay/Interact"</param>
+    /// <param name="actionHierarchyName">å½¢å¦‚"Gameplay/Interact"</param>
     private InputAction FindActionByName(string actionHierarchyName) {
         InputAction action = input.asset.FindAction(actionHierarchyName);
         return action;
     }
 
     /// <summary>
-    /// »ñÈ¡Â·¾¶¶ÔÓ¦InputActionËù°ó¶¨µÄ²Ù×÷¡£
-    /// ÀıÈç£º"Gameplay/Interact" -> "[E]"¡£
+    /// è·å–è·¯å¾„å¯¹åº”InputActionæ‰€ç»‘å®šçš„æ“ä½œã€‚
+    /// ä¾‹å¦‚ï¼š"Gameplay/Interact" -> "[E]"ã€‚
     /// </summary>
     public string GetCurrentBinding(string actionHierarchyName) { 
         InputAction actionToRemap = FindActionByName(actionHierarchyName);
@@ -136,8 +136,8 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ¶¯Ì¬»»°ó²Ù×÷¶ÔÓ¦µÄ°´¼ü¡£
-    /// ¿É×Ô¶¨Òå°ó¶¨³É¹¦/È¡Ïû/·¢ÏÖ¼üÎ»³åÍ»Ê±µÄCallback¡£
+    /// åŠ¨æ€æ¢ç»‘æ“ä½œå¯¹åº”çš„æŒ‰é”®ã€‚
+    /// å¯è‡ªå®šä¹‰ç»‘å®šæˆåŠŸ/å–æ¶ˆ/å‘ç°é”®ä½å†²çªæ—¶çš„Callbackã€‚
     /// </summary>
     public void RemapAction(string actionHierarchyName, Action onComplete = null, Action onCancel = null, Action<bool, string> onDuplicate = null) {
         InputAction actionToRemap = FindActionByName(actionHierarchyName);
@@ -175,7 +175,7 @@ public class InputModule : MonoBehaviour, IGameModule
     }
 
     /// <summary>
-    /// ¼ì²â¼üÎ»ÊÇ·ñ³öÏÖ¼üÎ»³åÍ»¡£
+    /// æ£€æµ‹é”®ä½æ˜¯å¦å‡ºç°é”®ä½å†²çªã€‚
     /// </summary>
     private bool HaveDuplicateBinding(string path, InputAction action) {
         foreach (InputBinding binding in input.bindings) {

@@ -4,12 +4,12 @@ using UnityEngine;
 using System.Linq;
 
 /// <summary>
-/// Service LocatorÊµÏÖÓÎÏ·ÖĞ¿ç³¡¾°Í¨ÓÃÄ£¿éµÄ·Çµ¥Àı·Ö·¢¡£
+/// Service Locatorå®ç°æ¸¸æˆä¸­è·¨åœºæ™¯é€šç”¨æ¨¡å—çš„éå•ä¾‹åˆ†å‘ã€‚
 /// </summary>
 public class ModuleDispatcher
 {
     /// <summary>
-    /// µ¥Àı£¬Ï£ÍûÕâÊÇÓÎÏ·ÔËĞĞÊ±µÄÎ¨Ò»Ò»¸öµ¥Àı¡£
+    /// å•ä¾‹ï¼Œå¸Œæœ›è¿™æ˜¯æ¸¸æˆè¿è¡Œæ—¶çš„å”¯ä¸€ä¸€ä¸ªå•ä¾‹ã€‚
     /// </summary>
     #region Singleton
     private ModuleDispatcher() { }
@@ -34,7 +34,7 @@ public class ModuleDispatcher
     private static GameObject gameObject;
 
     /// <summary>
-    /// ³õÊ¼»¯Ê±´´½¨Ò»¸öGameObjectÓÃÀ´³ĞÔØ»ùÓÚMonoµÄÄ£¿é¡£
+    /// åˆå§‹åŒ–æ—¶åˆ›å»ºä¸€ä¸ªGameObjectç”¨æ¥æ‰¿è½½åŸºäºMonoçš„æ¨¡å—ã€‚
     /// </summary>
     private static void Init()
     {
@@ -46,9 +46,9 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// »ñÈ¡Ö¸¶¨µÄÄ£¿é¡£
+    /// è·å–æŒ‡å®šçš„æ¨¡å—ã€‚
     /// </summary>
-    /// <typeparam name="T">Ä£¿éÀàĞÍ</typeparam>
+    /// <typeparam name="T">æ¨¡å—ç±»å‹</typeparam>
     public T Get<T>() where T : IGameModule {
         string key = typeof(T).Name;
         if (!modules.ContainsKey(key)) {
@@ -58,7 +58,7 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// ×¢²áÄ£¿éµ½Ä£¿é³Ø¡£
+    /// æ³¨å†Œæ¨¡å—åˆ°æ¨¡å—æ± ã€‚
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="module"></param>
@@ -72,7 +72,7 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// ×¢²á¾²Ì¬Ä£¿é¡£
+    /// æ³¨å†Œé™æ€æ¨¡å—ã€‚
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void Register<T>() where T : IGameModule, new() {
@@ -80,7 +80,7 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// ×¢²á»ùÓÚMonoµÄÄ£¿é¡£
+    /// æ³¨å†ŒåŸºäºMonoçš„æ¨¡å—ã€‚
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void RegisterMono<T>() where T: MonoBehaviour, IGameModule {
@@ -91,7 +91,7 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// ´ÓÄ£¿é³ØÖĞÉ¾³ı£¬Èç¹ûÊÇMonoÄ£¿éÒ²»áÍ¬Ê±É¾³ıÆäGameObject¡£
+    /// ä»æ¨¡å—æ± ä¸­åˆ é™¤ï¼Œå¦‚æœæ˜¯Monoæ¨¡å—ä¹Ÿä¼šåŒæ—¶åˆ é™¤å…¶GameObjectã€‚
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public void Unregister<T>() where T : IGameModule {
@@ -108,8 +108,8 @@ public class ModuleDispatcher
     }
 
     /// <summary>
-    /// DebugÓÃ£¬»ñÈ¡µ±Ç°µÄÄ£¿éĞÅÏ¢¡£
-    /// ÎªÁË°²È«Æğ¼û×öÁËÒ»ÏÂClone£¬ÑÚ¶úµÁÁå¡£
+    /// Debugç”¨ï¼Œè·å–å½“å‰çš„æ¨¡å—ä¿¡æ¯ã€‚
+    /// ä¸ºäº†å®‰å…¨èµ·è§åšäº†ä¸€ä¸‹Cloneï¼Œæ©è€³ç›—é“ƒã€‚
     /// </summary>
     public Dictionary<string, IGameModule> ReadModulesData() {
         return modules.ToDictionary(s => s.Key, s => s.Value);

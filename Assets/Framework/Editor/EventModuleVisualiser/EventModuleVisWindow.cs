@@ -8,8 +8,8 @@ using System.Linq;
 using UnityEditor;
 
 /// <summary>
-/// �¼�ģ���Debug���ߡ�
-/// ������ʱʵʱ��ʾ��ע����¼����������¼����༰������
+/// 事件模块的Debug工具。
+/// 在运行时实时显示已注册的事件、监听此事件的类及方法。
 /// </summary>
 public class EventModuleVisWindow : OdinEditorWindow
 {

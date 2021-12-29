@@ -7,12 +7,12 @@ using System.Text.RegularExpressions;
 using System;
 
 /// <summary>
-/// ´æµµÄ£¿é¡£¹ÜÀí´æµµÊı¾İµÄ´æÈ¡ºÍ´æµµÎÄ¼şµÄ¶ÁĞ´¡£
+/// å­˜æ¡£æ¨¡å—ã€‚ç®¡ç†å­˜æ¡£æ•°æ®çš„å­˜å–å’Œå­˜æ¡£æ–‡ä»¶çš„è¯»å†™ã€‚
 /// </summary>
 public class SaveModule : IGameModule
 {
     /// <summary>
-    /// ×¢²áÄ£¿é£¬³õÊ¼»¯´æµµ¡£
+    /// æ³¨å†Œæ¨¡å—ï¼Œåˆå§‹åŒ–å­˜æ¡£ã€‚
     /// </summary>
     public static void Init() {
         ModuleDispatcher.Instance.Register<SaveModule>();
@@ -21,17 +21,17 @@ public class SaveModule : IGameModule
         StartupProcess();
     }
 
-    // ¿ÉÒÔÓÃÀ´ÅĞ¶¨ÊÇ·ñµÚÒ»´ÎÆô¶¯ÓÎÏ·¡£
+    // å¯ä»¥ç”¨æ¥åˆ¤å®šæ˜¯å¦ç¬¬ä¸€æ¬¡å¯åŠ¨æ¸¸æˆã€‚
     public static bool InitedWithGlobalData;
     public static bool ExistGlobalSaveFile => File.Exists(GlobalSaveFile);
 
-    // ¿ÉÒÔÓÃÀ´ÅĞ¶¨Ä³¸ö²ÛÎ»ÊÇ·ñÓĞ´æµµ¡£
+    // å¯ä»¥ç”¨æ¥åˆ¤å®šæŸä¸ªæ§½ä½æ˜¯å¦æœ‰å­˜æ¡£ã€‚
     public static bool ExistSlotSaveFile(int slotNum)
     {
         return saveSlots.ContainsKey(slotNum);
     }
     
-    // ÓĞ´æµµµÄ²ÛÎ»ÁĞ±í¡£
+    // æœ‰å­˜æ¡£çš„æ§½ä½åˆ—è¡¨ã€‚
     public static Dictionary<int, string> saveSlots = new();
     
     private static string SavePath => Application.persistentDataPath + "/saves/";
@@ -45,7 +45,7 @@ public class SaveModule : IGameModule
     #region Game Start-up
 
     /// <summary>
-    /// Ö»ÊÇÓÃÀ´ÊáÀíÒ»ÏÂ³õÊ¼»¯´æµµ¹ı³ÌµÄË³Ğò¡£
+    /// åªæ˜¯ç”¨æ¥æ¢³ç†ä¸€ä¸‹åˆå§‹åŒ–å­˜æ¡£è¿‡ç¨‹çš„é¡ºåºã€‚
     /// </summary>
     private static void StartupProcess() {
         CreateSaveDir();
@@ -54,7 +54,7 @@ public class SaveModule : IGameModule
     }
     
     /// <summary>
-    /// Èç¹û´æµµÎÄ¼ş¼Ğ²»´æÔÚÔò´´½¨¡£
+    /// å¦‚æœå­˜æ¡£æ–‡ä»¶å¤¹ä¸å­˜åœ¨åˆ™åˆ›å»ºã€‚
     /// </summary>
     private static void CreateSaveDir() {
         if (!Directory.Exists(SavePath)) { 
@@ -64,7 +64,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// É¨Ò»±é´æµµÎÄ¼ş¼Ğ£¬»ñÈ¡ÒÑÓĞ´æµµµÄ²ÛÎ»ÁĞ±í¡£
+    /// æ‰«ä¸€éå­˜æ¡£æ–‡ä»¶å¤¹ï¼Œè·å–å·²æœ‰å­˜æ¡£çš„æ§½ä½åˆ—è¡¨ã€‚
     /// </summary>
     private static void ReadUsedSlots() {
         string[] slotFiles = Directory.GetFiles(SavePath);
@@ -86,7 +86,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ¶ÁÈ¡Global´æµµ£¬Èç¹û¶Áµ½ÈÎÒâ´æµµÊı¾İÔòÅĞ¶¨³õÊ¼»¯³É¹¦¡£
+    /// è¯»å–Globalå­˜æ¡£ï¼Œå¦‚æœè¯»åˆ°ä»»æ„å­˜æ¡£æ•°æ®åˆ™åˆ¤å®šåˆå§‹åŒ–æˆåŠŸã€‚
     /// </summary>
     private static void InitWithGlobalData()
     {
@@ -106,8 +106,8 @@ public class SaveModule : IGameModule
     private static Dictionary<string, string> globalData = new Dictionary<string, string>();
 
     /// <summary>
-    /// µ±Ç°¼¤»îµÄ´æµµ²ÛÎ»¡£
-    /// ÇëÊ¹ÓÃSwitchSaveSlotÀ´ÇĞ»»¼¤»îµÄ²ÛÎ»¡£
+    /// å½“å‰æ¿€æ´»çš„å­˜æ¡£æ§½ä½ã€‚
+    /// è¯·ä½¿ç”¨SwitchSaveSlotæ¥åˆ‡æ¢æ¿€æ´»çš„æ§½ä½ã€‚
     /// </summary>
     public static int ActiveSlot { get; private set; }
 
@@ -116,7 +116,7 @@ public class SaveModule : IGameModule
     #region Read and Write Utils
     
     /// <summary>
-    /// ½«´ÊµädataÖĞµÄÊı¾İĞ´Èë´æµµÎÄ¼şpath¡£
+    /// å°†è¯å…¸dataä¸­çš„æ•°æ®å†™å…¥å­˜æ¡£æ–‡ä»¶pathã€‚
     /// </summary>
     private static void TryWriteToPath(string path, Dictionary<string, string> data) {
         if (data.Count == 0)
@@ -141,9 +141,9 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ´Ó´æµµÎÄ¼şpath¶ÁÈ¡´ÊµäÊı¾İ¡£
+    /// ä»å­˜æ¡£æ–‡ä»¶pathè¯»å–è¯å…¸æ•°æ®ã€‚
     /// </summary>
-    /// <returns>¶ÁÈ¡µ½µÄ´ÊµäÊı¾İ¡£</returns>
+    /// <returns>è¯»å–åˆ°çš„è¯å…¸æ•°æ®ã€‚</returns>
     private static Dictionary<string, string> TryReadFromPath(string path) {
         StreamReader sr = new StreamReader(path);
         Dictionary<string, string> data = new Dictionary<string, string>();
@@ -175,9 +175,9 @@ public class SaveModule : IGameModule
     #region Global Save
     
     /// <summary>
-    /// ´´½¨Global´æµµÎÄ¼ş¡£
+    /// åˆ›å»ºGlobalå­˜æ¡£æ–‡ä»¶ã€‚
     /// </summary>
-    /// <param name="overwrite">ÊÇ·ñÔÊĞí¸²¸Ç¾ÉµÄ´æµµ</param>
+    /// <param name="overwrite">æ˜¯å¦å…è®¸è¦†ç›–æ—§çš„å­˜æ¡£</param>
     public static void CreateGlobalSaveFile(bool overwrite = false)
     {
         if (ExistGlobalSaveFile)
@@ -196,10 +196,10 @@ public class SaveModule : IGameModule
         DevUtils.Log($"Global save file created at {GlobalSaveFile}", "SaveModule");
     }
     
-    // ²»£¬Äã²¢²»ÏëÉ¾³ıGlobal´æµµÎÄ¼ş¡£
+    // ä¸ï¼Œä½ å¹¶ä¸æƒ³åˆ é™¤Globalå­˜æ¡£æ–‡ä»¶ã€‚
 
     /// <summary>
-    /// ½«ÄÚ´æÖĞµÄGlobal´æµµÊı¾İĞ´ÈëÎÄ¼ş¡£
+    /// å°†å†…å­˜ä¸­çš„Globalå­˜æ¡£æ•°æ®å†™å…¥æ–‡ä»¶ã€‚
     /// </summary>
     public static void WriteGlobalSaveFile() {
         if (File.Exists(GlobalSaveFile))
@@ -213,7 +213,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ´ÓGlobal´æµµÎÄ¼şÖĞ½«´æµµÊı¾İ¶ÁÈëÄÚ´æ¡£
+    /// ä»Globalå­˜æ¡£æ–‡ä»¶ä¸­å°†å­˜æ¡£æ•°æ®è¯»å…¥å†…å­˜ã€‚
     /// </summary>
     public static void ReadGlobalSaveFile() {
         if (File.Exists(GlobalSaveFile)) {
@@ -226,7 +226,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ½«¼üÖµ¶Ô(key, value)´æÈëÄÚ´æÖĞ¡£
+    /// å°†é”®å€¼å¯¹(key, value)å­˜å…¥å†…å­˜ä¸­ã€‚
     /// </summary>
     public static void SaveGlobal(string key, string value)
     {
@@ -241,9 +241,9 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ´ÓÄÚ´æÖĞ¶ÁÈ¡ÌõÄ¿keyµÄÖµ¡£
+    /// ä»å†…å­˜ä¸­è¯»å–æ¡ç›®keyçš„å€¼ã€‚
     /// </summary>
-    /// <returns>Èç¹û²¢Ã»ÓĞ¶ÔÓ¦µÄÊı¾İ£¬·µ»ØµÄÊÇstring.Empty</returns>
+    /// <returns>å¦‚æœå¹¶æ²¡æœ‰å¯¹åº”çš„æ•°æ®ï¼Œè¿”å›çš„æ˜¯string.Empty</returns>
     public static string ReadGlobal(string key)
     {
         if (globalData.ContainsKey(key))
@@ -262,10 +262,10 @@ public class SaveModule : IGameModule
     #region Slot Save
 
     /// <summary>
-    /// »ñÈ¡ÏÂÒ»¸ö¿ÉÓÃµÄ¿Õ´æµµ²Û¡£
-    /// ´Ó1¿ªÊ¼ÏòÉÏµİÔö¡£
+    /// è·å–ä¸‹ä¸€ä¸ªå¯ç”¨çš„ç©ºå­˜æ¡£æ§½ã€‚
+    /// ä»1å¼€å§‹å‘ä¸Šé€’å¢ã€‚
     /// </summary>
-    /// <returns>´æµµ²ÛµÄIndex</returns>
+    /// <returns>å­˜æ¡£æ§½çš„Index</returns>
     public static int GetNextValidSlotNumber()
     {
         if (saveSlots.Count == 0) return 1;
@@ -279,8 +279,8 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ÇĞ»»µ±Ç°¼¤»îµÄ´æµµ²ÛÎ»µ½slotNum¡£
-    /// »áÏÈ±£´æµ±Ç°²ÛÎ»µÄÊı¾İ£¬ÇĞ»»Ö®ºóÔÙ¶ÁÈ¡ĞÂ²ÛÎ»µÄÊı¾İ¡£
+    /// åˆ‡æ¢å½“å‰æ¿€æ´»çš„å­˜æ¡£æ§½ä½åˆ°slotNumã€‚
+    /// ä¼šå…ˆä¿å­˜å½“å‰æ§½ä½çš„æ•°æ®ï¼Œåˆ‡æ¢ä¹‹åå†è¯»å–æ–°æ§½ä½çš„æ•°æ®ã€‚
     /// </summary>
     public static void SwitchSaveSlot(int slotNum)
     {
@@ -297,9 +297,9 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ÔÚ²ÛÎ»SlotNum´´½¨ĞÂµÄ´æµµÎÄ¼ş¡£
+    /// åœ¨æ§½ä½SlotNumåˆ›å»ºæ–°çš„å­˜æ¡£æ–‡ä»¶ã€‚
     /// </summary>
-    /// <param name="overwrite">ÊÇ·ñÔÊĞí¸²¸Ç¾ÉµÄ´æµµ</param>
+    /// <param name="overwrite">æ˜¯å¦å…è®¸è¦†ç›–æ—§çš„å­˜æ¡£</param>
     public static void CreateSlotSaveFile(int slotNum, bool overwrite = false)
     {
         if (slotNum == 0)
@@ -329,7 +329,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// É¾³ı²ÛÎ»SlotNumµÄ´æµµÎÄ¼ş¡£
+    /// åˆ é™¤æ§½ä½SlotNumçš„å­˜æ¡£æ–‡ä»¶ã€‚
     /// </summary>
     public static void DeleteSlotSaveFile(int slotNum)
     {
@@ -343,7 +343,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ½«ÄÚ´æÖĞµÄ´æµµÊı¾İ´æÈëµ±Ç°¼¤»î²ÛÎ»µÄ´æµµÎÄ¼ş¡£
+    /// å°†å†…å­˜ä¸­çš„å­˜æ¡£æ•°æ®å­˜å…¥å½“å‰æ¿€æ´»æ§½ä½çš„å­˜æ¡£æ–‡ä»¶ã€‚
     /// </summary>
     public static void WriteSlotSaveFile()
     {
@@ -359,7 +359,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ´Óµ±Ç°²ÛÎ»µÄ´æµµÎÄ¼şÀï¶ÁÈ¡Êı¾İµ½ÄÚ´æ¡£
+    /// ä»å½“å‰æ§½ä½çš„å­˜æ¡£æ–‡ä»¶é‡Œè¯»å–æ•°æ®åˆ°å†…å­˜ã€‚
     /// </summary>
     public static void ReadSlotSaveFile()
     {
@@ -375,7 +375,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ½«¼üÖµ¶Ô(key, value)´æÈëÄÚ´æ¡£
+    /// å°†é”®å€¼å¯¹(key, value)å­˜å…¥å†…å­˜ã€‚
     /// </summary>
     public static void SaveData(string key, string value)
     {
@@ -392,9 +392,9 @@ public class SaveModule : IGameModule
 
     
     /// <summary>
-    /// ´ÓÄÚ´æÖĞ¶ÁÈ¡ÌõÄ¿keyµÄÖµ¡£
+    /// ä»å†…å­˜ä¸­è¯»å–æ¡ç›®keyçš„å€¼ã€‚
     /// </summary>
-    /// <returns>Èç¹û²¢Ã»ÓĞ¶ÔÓ¦µÄÊı¾İ£¬·µ»ØµÄÊÇstring.Empty</returns>
+    /// <returns>å¦‚æœå¹¶æ²¡æœ‰å¯¹åº”çš„æ•°æ®ï¼Œè¿”å›çš„æ˜¯string.Empty</returns>
     public static string ReadData(string key)
     {
         if (!CheckSlotSaveLoaded()) return string.Empty;
@@ -410,7 +410,7 @@ public class SaveModule : IGameModule
     }
 
     /// <summary>
-    /// ÓÃÀ´¼ì²éµ±Ç°ÊÇ·ñ¼¤»îÁË´æµµ²Û¡£
+    /// ç”¨æ¥æ£€æŸ¥å½“å‰æ˜¯å¦æ¿€æ´»äº†å­˜æ¡£æ§½ã€‚
     /// </summary>
     private static bool CheckSlotSaveLoaded()
     {
