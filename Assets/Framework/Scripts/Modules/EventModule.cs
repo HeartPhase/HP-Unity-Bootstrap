@@ -29,15 +29,14 @@ public class EventModule : IGameModule
 
         if (events.ContainsKey(name))
         {
-            Action<EventArgs> actions = events[name];
-            Delegate[] actionsList = actions.GetInvocationList();
+            Delegate[] actionsList = events[name].GetInvocationList();
             if (Array.Exists(actionsList, s => s == (Delegate)action))
             {
                 DevUtils.Log("Duplicated Listen");
             }
             else
             {
-                actions += action;
+                events[name] += action;
             }
         }
         else { 
@@ -48,7 +47,7 @@ public class EventModule : IGameModule
     /// <summary>
     /// 触发名为name的事件。
     /// </summary>
-    public void Invoke(string name, EventArgs args) {
+    public void Invoke(string name, EventArgs args = null) {
         if (events.ContainsKey(name)) { 
             events[name].Invoke(args);
         }
@@ -75,12 +74,11 @@ public class EventModule : IGameModule
 
         if (events.ContainsKey(name))
         {
-            Action<EventArgs> actions = events[name];
-            Delegate[] actionList = actions.GetInvocationList();
+            Delegate[] actionList = events[name].GetInvocationList();
             if (Array.Exists(actionList, s => s == (Delegate)action))
             {
-                actions -= action;
-                if (actions.GetInvocationList().Length == 0) { 
+                events[name] -= action;
+                if (events[name] == null) { 
                     events.Remove(name);
                 }
             }

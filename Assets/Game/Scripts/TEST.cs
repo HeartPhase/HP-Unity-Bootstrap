@@ -11,9 +11,12 @@ public class TEST : MonoBehaviour
     [SerializeField] GameObject cube;
     [SerializeField] GameObject sphere;
 
+    private EventModule EM => ModuleDispatcher.Instance.Get<EventModule>();
     private void Awake()
     {
         //SaveModule.SwitchSaveSlot(SaveModule.GetNextValidSlotNumber());
+        EM.Listen("Test Event", TestResponse);
+        EM.Listen("Test Event", TestResponse2);
     }
 
     public void TEST1_click()
@@ -26,12 +29,24 @@ public class TEST : MonoBehaviour
         //    () => { if (!showingDuplicateInfo) devText.text = "Cancelled"; },
         //    (duplicated, path) => { devText.text = $"{path} is taken for another action!"; showingDuplicateInfo = true; }
         //);
-        SaveModule.SaveData(GenTestData(),GenTestData());
+        //SaveModule.SaveData(GenTestData(),GenTestData());
+        EM.Remove("Test Event", TestResponse);
+        EM.Remove("Test Event", TestResponse2);
+    }
+
+    private void TestResponse(EventArgs obj)
+    {
+        DevUtils.Log("Hi there");
+    }
+
+    private void TestResponse2(EventArgs obj)
+    {
+        DevUtils.Log("Hi there too");
     }
 
     public void TEST2_click()
     {
-        SaveModule.WriteSlotSaveFile();
+        EM.Invoke("Test Event");
     }
 
     private string GenTestData()
