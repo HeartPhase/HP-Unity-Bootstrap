@@ -8,6 +8,9 @@ public static class StringExtension
 {
     private static byte[] Key => FrameworkGlobals.ENCRYPTION_KEY;
 
+    /// <summary>
+    /// 加密一个字符串，如果需要稍微确保数据安全，请修改全局配置中的加密密钥。
+    /// </summary>
     public static string Encrypt(this string ctx) { 
         SymmetricAlgorithm algo = Aes.Create();
         algo.GenerateIV();
@@ -22,6 +25,9 @@ public static class StringExtension
         return Convert.ToBase64String(outputBuffer);
     }
 
+    /// <summary>
+    /// 解密一个字符串。
+    /// </summary>
     public static string Decrypt(this string ctx) {
         SymmetricAlgorithm algo = Aes.Create();
         byte[] inputBuffer = Convert.FromBase64String(ctx);

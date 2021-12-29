@@ -13,7 +13,7 @@ public class TEST : MonoBehaviour
 
     private void Awake()
     {
-        SaveModule.SwitchSaveSlot(SaveModule.GetNextValidSlotNumber());
+        //SaveModule.SwitchSaveSlot(SaveModule.GetNextValidSlotNumber());
     }
 
     public void TEST1_click()
